@@ -147,10 +147,6 @@
           }
         }
 
-        console.log("this was triggerred once");
-        
-
-        (++currentQuestion === numQuestions) ? base.methods.finish() : base.methods.nextQuestion();
 
         $('#quiz-response').html(response);
         $('#quiz-controls').fadeIn();
@@ -158,6 +154,11 @@
         if (typeof base.options.answerCallback === 'function') {
           base.options.answerCallback(currentQuestion, selected === correct);
         }
+
+        console.log("this was triggerred once");
+        
+
+        (++currentQuestion === numQuestions) ? base.methods.finish() : base.methods.nextQuestion();
       },
       nextQuestion: function() {
         answerLocked = false;
