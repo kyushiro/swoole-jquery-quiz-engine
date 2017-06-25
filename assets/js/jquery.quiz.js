@@ -55,10 +55,7 @@
           base.methods.finish();
         });
 
-        $(document).on('click', '#quiz-restart-btn, #quiz-retry-btn', function(e) {
-          e.preventDefault();
-          base.methods.restart();
-        });
+
       },
       setup: function() {
         var quizHtml = '';
@@ -92,7 +89,6 @@
         quizHtml += '<div id="quiz-buttons">';
         quizHtml += '<a href="#" id="quiz-next-btn">Next</a>';
         quizHtml += '<a href="#" id="quiz-finish-btn">Finish</a>';
-        quizHtml += '<a href="#" id="quiz-restart-btn">Restart</a>';
         quizHtml += '</div>';
         quizHtml += '</div>';
 
@@ -118,7 +114,6 @@
         $(startScreen).hide();
         $('#quiz-controls').hide();
         $('#quiz-finish-btn').hide();
-        $('#quiz-restart-btn').hide();
         $('#questions').show();
         $('#quiz-counter').show();
         $('.question-container:first-child').show().addClass('active-question');
@@ -209,7 +204,6 @@
         $('#quiz-response').hide();
         $('#quiz-finish-btn').hide();
         $('#quiz-next-btn').hide();
-        $('#quiz-restart-btn').show();
         $(resultsScreen).show();
         $('#quiz-results').html('Your results have been submitted! Please wait while everyone is completed the quiz');
 
@@ -241,7 +235,6 @@
         score = 0;
         $('.answers a').removeClass('correct incorrect');
         base.$el.removeClass().addClass('quiz-container');
-        $('#quiz-restart-btn').hide();
         $(gameOverScreen).hide();
         $(resultsScreen).hide();
         $('#quiz-controls').hide();
