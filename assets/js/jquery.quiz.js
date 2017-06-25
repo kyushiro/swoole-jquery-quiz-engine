@@ -147,9 +147,10 @@
           }
         }
 
-        console.log(currentQuestion+1)
+        console.log()
 
-        return base.methods.nextQuestion();
+        if (!(currentQuestion+1>numQuestions))
+            return base.methods.nextQuestion();
         
         $('#quiz-response').html(response);
         $('#quiz-controls').fadeIn();
