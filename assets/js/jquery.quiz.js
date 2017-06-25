@@ -105,7 +105,10 @@
       start: function() {
 
         var email = $("#txt-email-input").val();
-        if (email == "") return;
+        if (email == ""){
+            $(".data-email-input").html("please enter your email");
+            return;
+        } 
 
         $('.data-email-input').html(email);
         $("#txt-email-input").hide();
