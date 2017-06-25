@@ -53,6 +53,32 @@ $('#quiz').quiz({
       'correctIndex': 2,
       'correctResponse': 'Correct! Refer to the documentation for the structure.',
       'incorrectResponse': 'Wrong! Do it in the javascript configuration. You might need to read the documentation.'
-    }
+    },
+
+
+    {
+      "q" : "Given <div id='outer'><div class='inner'></div></div>, which of these two is the most performant way to select the inner div ?",
+      "options"  : [
+          "getElementById('outer').children[0]",
+          "getElementsByClassName('inner')[0]"
+      ],
+      "correctIndex"   : 0,
+      'correctResponse': 'Correct! Refer to the documentation for the structure.',
+      'incorrectResponse': 'Wrong! Do it in the javascript configuration. You might need to read the documentation.'
+
+    },
+    {
+        "q" : "Given this:<br>"+
+        "<img src='http://thomasburleson.github.io/angularjs-Quizzler/assets/data/images/q1_1.jpg' /><p>Which message will be returned by injecting this service and executing 'myService.getMessage()'?</p>",
+        "options"  : [
+            "Message one!",
+            "Message two!",
+            "Message three!"
+        ],
+      "correctIndex"   : 2,
+      'correctResponse': 'Correct! Refer to the documentation for the structure.',
+      'incorrectResponse': 'Wrong! Do it in the javascript configuration. You might need to read the documentation.'
+
+        }
   ]
 });
