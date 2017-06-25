@@ -13,7 +13,7 @@ $('#quiz').quiz({
   counterFormat: 'Question %current of %total',
   questions: [
     {
-      'q': 'Is jQuery required for this plugin?',
+      'q': 'Is jQuery <strong>required</strong> for this plugin?',
       'options': [
         'Yes',
         'No'
