@@ -158,7 +158,7 @@
         console.log("this was triggerred once");
         
 
-        (++currentQuestion === numQuestions) ? base.methods.finish() : base.methods.nextQuestion();
+        (currentQuestion+1 === numQuestions) ? base.methods.finish() : base.methods.nextQuestion();
       },
       nextQuestion: function() {
         answerLocked = false;
