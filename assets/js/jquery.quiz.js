@@ -136,11 +136,11 @@
 
         if (selected === correct) {
           $answerEl.addClass('correct');
-          response = questions[currentQuestionIndex].correctResponse;
+          response = "Thank you for taking this quiz :) Click the button below to sumbit your results"; // questions[currentQuestionIndex].correctResponse;
           score++;
         } else {
           $answerEl.addClass('incorrect');
-          response = questions[currentQuestionIndex].incorrectResponse;
+          response = "Thank you for taking this quiz :) Click the button below to sumbit your results"; //questions[currentQuestionIndex].incorrectResponse;
           if (!base.options.allowIncorrect) {
             base.methods.gameOver(response);
             return;
