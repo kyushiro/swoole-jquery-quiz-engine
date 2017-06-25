@@ -147,7 +147,7 @@
           }
         }
 
-        return (++currentQuestion === numQuestions)? base.methods.finish() : base.methods.nextQuestion();
+       (++currentQuestion === numQuestions) ? base.methods.finish() : base.methods.nextQuestion();
 
         $('#quiz-response').html(response);
         $('#quiz-controls').fadeIn();
