@@ -4,6 +4,7 @@
 
   $.quiz = function(el, options) {
     var base = this;
+    var submissions = ['answers'];
 
     // Access to jQuery version of element
     base.$el = $(el);
@@ -134,6 +135,8 @@
           currentQuestionIndex = currentQuestion - 1,
           correct = questions[currentQuestionIndex].correctIndex;
 
+          submissions.push(selected);
+
         if (selected === correct) {
           $answerEl.addClass('correct');
           response = "Thank you for taking this quiz :) Click the button below to sumbit your results"; // questions[currentQuestionIndex].correctResponse;
@@ -209,6 +212,8 @@
         $('#quiz-restart-btn').show();
         $(resultsScreen).show();
         $('#quiz-results').html('You got ' + score + ' out of ' + numQuestions + ' correct!');
+
+        console.log(submissions);
 
         if (typeof base.options.finishCallback === 'function') {
           base.options.finishCallback();
