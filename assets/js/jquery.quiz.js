@@ -163,6 +163,8 @@
       nextQuestion: function() {
         answerLocked = false;
 
+        alert('onNext');
+
         $('.active-question')
           .hide()
           .removeClass('active-question')
