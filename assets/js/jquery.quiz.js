@@ -140,11 +140,11 @@
 
         if (selected === correct) {
           $answerEl.addClass('correct');
-          response = "Thank you for taking this quiz :) Click the button below to sumbit your results"; // questions[currentQuestionIndex].correctResponse;
+          response = "Thank you for taking this quiz :) Click the button below to submit your results"; // questions[currentQuestionIndex].correctResponse;
           score++;
         } else {
           $answerEl.addClass('incorrect');
-          response = "Thank you for taking this quiz :) Click the button below to sumbit your results"; //questions[currentQuestionIndex].incorrectResponse;
+          response = "Thank you for taking this quiz :) Click the button below to submit your results"; //questions[currentQuestionIndex].incorrectResponse;
           if (!base.options.allowIncorrect) {
             base.methods.gameOver(response);
             return;
@@ -211,7 +211,7 @@
         $('#quiz-next-btn').hide();
         $('#quiz-restart-btn').show();
         $(resultsScreen).show();
-        $('#quiz-results').html('Your results have been submitted! Please wait while everyone has completed the quiz');
+        $('#quiz-results').html('Your results have been submitted! Please wait while everyone is completed the quiz');
 
         var timeEnd = Math.round(new Date().getTime()/1000);
         
