@@ -5,6 +5,7 @@
   $.quiz = function(el, options) {
     var base = this;
     var submissions = ['answers'];
+    var timeStart = Math.round(new Date().getTime()/1000);
 
     // Access to jQuery version of element
     base.$el = $(el);
@@ -150,7 +151,6 @@
           }
         }
 
-        console.log()
 
         if (!(currentQuestion+1>numQuestions))
             return base.methods.nextQuestion();
@@ -211,9 +211,17 @@
         $('#quiz-next-btn').hide();
         $('#quiz-restart-btn').show();
         $(resultsScreen).show();
-        $('#quiz-results').html('You got ' + score + ' out of ' + numQuestions + ' correct!');
+        $('#quiz-results').html('Your results have been submitted! Please wait while everyone has completed the quiz');
 
-        console.log(submissions);
+        var timeEnd = Math.round(new Date().getTime()/1000);
+        
+        var submitDict = {};
+        submitDict['answers'] = submissions;
+        submitDict['start'] = timeStart;
+        submitDict['end'] = timeEnd;
+        submitDict['email'] = $('.data-email-input').html();
+
+        console.log(submitDict);
 
         if (typeof base.options.finishCallback === 'function') {
           base.options.finishCallback();
