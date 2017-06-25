@@ -107,7 +107,7 @@
         var email = $("#txt-email-input").val();
         if (email == "") return;
 
-        $('.data-email-input').html('email');
+        $('.data-email-input').html(email);
         $("#txt-email-input").hide();
         base.$el.removeClass('quiz-start-state').addClass('quiz-questions-state');
         $(startScreen).hide();
