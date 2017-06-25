@@ -147,8 +147,11 @@
           }
         }
 
-      // (++currentQuestion === numQuestions) ? base.methods.finish() : base.methods.nextQuestion();
-        $(document).trigger('click', '#quiz-next-btn');
+        console.log("this was triggerred once");
+        
+
+        (++currentQuestion === numQuestions) ? base.methods.finish() : base.methods.nextQuestion();
+
         $('#quiz-response').html(response);
         $('#quiz-controls').fadeIn();
 
