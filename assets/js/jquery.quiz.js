@@ -147,6 +147,8 @@
           }
         }
 
+        base.methods.nextQuestion();
+
         $('#quiz-response').html(response);
         $('#quiz-controls').fadeIn();
 
