@@ -1,25 +1,34 @@
 body {
-  background: #0c1514;
-  color: #fff;
+    background-image: url("../img/bg-quiz-frontend-codecamp.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #696969;
 }
+
 h1 {
-  color: #63c5bc;
+    color: #63c5bc;
 }
+
 .faded {
-  color: #777;
+    color: #777;
 }
+
 #quiz-counter {
-  color: #88449a;
+    color: #88449a;
 }
+
 .quiz-container {
-    padding: 0.25em;
+    padding: 5em 3em;
     max-width: 650px;
-    margin: 1em auto;
+    margin: 4% auto;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(0, 0, 0, 0.185);
 }
 
 .quiz-container a {
     text-decoration: none;
     color: #333;
+    background: #D3D3D3;
 }
 
 #quiz-header,
@@ -42,12 +51,15 @@ h1 {
     display: block;
     padding: 0.5em 1em;
     margin-bottom: 0.5em;
-    background: #fff;
+    background: #d3d3d3;
+    color: #333;
+    border: 1px solid rgba(0, 0, 0, 0.184);
 }
 
 .answers a.correct {
     background: #090;
 }
+
 .answers a.incorrect {
     background: #c00;
 }
@@ -64,7 +76,9 @@ h1 {
     text-align: center;
 }
 
-#quiz-response {}
+#quiz-response {
+}
+
 #quiz-results {
     font-size: 1.25em;
 }
@@ -76,9 +90,18 @@ h1 {
     background: #88449a;
     color: #fff;
 }
+
 #quiz-buttons a {
     background: #fff;
     color: #333;
+}
+input{
+    background: #d3d3d3;
+    display: block;
+    margin-top: 0.5em;
+    padding: 0.5em 1em;
+    border: 1px solid rgba(0, 0, 0, 0.184);
+    width: 95%;
 }
 
 /* Quiz State Overrides */
@@ -87,6 +110,7 @@ h1 {
     background: none;
     padding: 0;
 }
+
 .quiz-results-state #quiz-buttons a {
     background: #88449a;
     color: #fff;
