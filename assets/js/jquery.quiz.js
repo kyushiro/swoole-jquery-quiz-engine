@@ -112,7 +112,7 @@
         if (emailValidationExp.test(email)) {
           textEnterEmail.hide();
           textSubTitle.html("Do your best!");
-          timeStart = Math.round(new Date().getTime() / 1000);
+          timeStart = new Date().getTime();
         }
         else if (email == "") {
           $(".data-email-input").html('<p class="text-center text-danger">Please enter your email.</p>');
@@ -235,7 +235,7 @@
         $(resultsScreen).show();
         $('#quiz-results').html('Your results have been submitted! Please wait while everyone is completed the quiz');
 
-        var timeEnd = Math.round(new Date().getTime() / 1000);
+        var timeEnd = new Date().getTime();
 
         var submitDict = {};
         submitDict['answers'] = submissions;
