@@ -38,7 +38,8 @@
     $data[$email] = $UserResultArray;
 
     $data = json_encode($data);
+    var_dump($data);
 
-    file_put_contents($filePath . "results.json");
+    $badabouf = file_put_contents($filePath . "results.json");
 
-    echo "1";
+    echo "1 - ".$badabouf;
