@@ -1,11 +1,11 @@
-;(function($, window, document, undefined) {
+;(function ($, window, document, undefined) {
 
   'use strict';
 
-  $.quiz = function(el, options) {
+  $.quiz = function (el, options) {
     var base = this;
     var submissions = ['answers'];
-    var timeStart = Math.round(new Date().getTime()/1000);
+    var timeStart = Math.round(new Date().getTime() / 1000);
 
     // Access to jQuery version of element
     base.$el = $(el);
@@ -27,37 +27,37 @@
       answerLocked = false;
 
     base.methods = {
-      init: function() {
+      init: function () {
         base.methods.setup();
 
-        $(document).on('click', startButton, function(e) {
+        $(document).on('click', startButton, function (e) {
           e.preventDefault();
           base.methods.start();
         });
 
-        $(document).on('click', homeButton, function(e) {
+        $(document).on('click', homeButton, function (e) {
           e.preventDefault();
           base.methods.home();
         });
 
-        $(document).on('click', '.answers a', function(e) {
+        $(document).on('click', '.answers a', function (e) {
           e.preventDefault();
           base.methods.answerQuestion(this);
         });
 
-        $(document).on('click', '#quiz-next-btn', function(e) {
+        $(document).on('click', '#quiz-next-btn', function (e) {
           e.preventDefault();
           base.methods.nextQuestion();
         });
 
-        $(document).on('click', '#quiz-finish-btn', function(e) {
+        $(document).on('click', '#quiz-finish-btn', function (e) {
           e.preventDefault();
           base.methods.finish();
         });
 
 
       },
-      setup: function() {
+      setup: function () {
         var quizHtml = '';
 
         if (base.options.counter) {
@@ -65,11 +65,11 @@
         }
 
         quizHtml += '<div id="questions">';
-        $.each(questions, function(i, question) {
+        $.each(questions, function (i, question) {
           quizHtml += '<div class="question-container">';
           quizHtml += '<p class="question">' + question.q + '</p>';
           quizHtml += '<ul class="answers">';
-          $.each(question.options, function(index, answer) {
+          $.each(question.options, function (index, answer) {
             quizHtml += '<li><a href="#" data-index="' + index + '">' + answer + '</a></li>';
           });
           quizHtml += '</ul>';
@@ -100,13 +100,38 @@
         $(resultsScreen).hide();
         $('#quiz-controls').hide();
       },
-      start: function() {
-
+      start: function () {
+        var textEnterEmail = $(".text-email");
         var email = $("#txt-email-input").val();
-        if (email == ""){
-            $(".data-email-input").html("please enter your email");
-            return;
-        } 
+        var emailValidationExp = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+
+
+        textEnterEmail.show();
+
+        if (emailValidationExp.test(email)) {
+          textEnterEmail.hide();
+        }
+        else if (email == "") {
+          $(".data-email-input").html('<p class="text-center text-danger">Please enter your email.</p>');
+          return;
+        }
+        else {
+          swal({
+            title: 'Invalid email address.',
+            type: 'warning',
+            text: 'Please enter valid email address.',
+            timer: 2000
+          }).then(
+            function () {},
+            // handling the promise rejection
+            function (dismiss) {
+              if (dismiss === 'timer') {
+                console.log('I was closed by the timer')
+              }
+            }
+          );
+          return false;
+        }
 
         $('.data-email-input').html(email);
         $("#txt-email-input").hide();
@@ -119,7 +144,7 @@
         $('.question-container:first-child').show().addClass('active-question');
         base.methods.updateCounter();
       },
-      answerQuestion: function(answerEl) {
+      answerQuestion: function (answerEl) {
         if (answerLocked) {
           return;
         }
@@ -131,7 +156,7 @@
           currentQuestionIndex = currentQuestion - 1,
           correct = questions[currentQuestionIndex].correctIndex;
 
-          submissions.push(selected);
+        submissions.push(selected);
 
         if (selected === correct) {
         //   $answerEl.addClass('correct');
@@ -147,18 +172,18 @@
         }
 
 
-        if (!(currentQuestion+1>numQuestions))
-            return base.methods.nextQuestion();
-        
+        if (!(currentQuestion + 1 > numQuestions))
+          return base.methods.nextQuestion();
+
         $('#quiz-response').html(response);
         $('#quiz-controls').fadeIn();
 
         if (typeof base.options.answerCallback === 'function') {
           base.options.answerCallback(currentQuestion, selected === correct);
-        }     
+        }
 
       },
-      nextQuestion: function() {
+      nextQuestion: function () {
         answerLocked = false;
 
         $('.active-question')
@@ -182,7 +207,7 @@
           base.options.nextCallback();
         }
       },
-      gameOver: function(response) {
+      gameOver: function (response) {
         // if gameover screen not in DOM, add it
         if ($(gameOverScreen).length === 0) {
           var quizHtml = '';
@@ -197,7 +222,7 @@
         $('#questions').hide();
         $(gameOverScreen).show();
       },
-      finish: function() {
+      finish: function () {
         base.$el.removeClass('quiz-questions-state').addClass('quiz-results-state');
         $('.active-question').hide().removeClass('active-question');
         $('#quiz-counter').hide();
@@ -207,8 +232,8 @@
         $(resultsScreen).show();
         $('#quiz-results').html('Your results have been submitted! Please wait while everyone is completed the quiz');
 
-        var timeEnd = Math.round(new Date().getTime()/1000);
-        
+        var timeEnd = Math.round(new Date().getTime() / 1000);
+
         var submitDict = {};
         submitDict['answers'] = submissions;
         submitDict['start'] = timeStart;
@@ -221,7 +246,7 @@
           base.options.finishCallback();
         }
       },
-      restart: function() {
+      restart: function () {
         base.methods.reset();
         base.$el.addClass('quiz-questions-state');
         $('#questions').show();
@@ -229,7 +254,7 @@
         $('.question-container:first-child').show().addClass('active-question');
         base.methods.updateCounter();
       },
-      reset: function() {
+      reset: function () {
         answerLocked = false;
         currentQuestion = 1;
         score = 0;
@@ -243,7 +268,7 @@
         $('#quiz-counter').hide();
         $('.active-question').hide().removeClass('active-question');
       },
-      home: function() {
+      home: function () {
         base.methods.reset();
         base.$el.addClass('quiz-start-state');
         $(startScreen).show();
@@ -252,7 +277,7 @@
           base.options.homeCallback();
         }
       },
-      updateCounter: function() {
+      updateCounter: function () {
         var countStr = base.options.counterFormat.replace('%current', currentQuestion).replace('%total', numQuestions);
         $('#quiz-counter').html(countStr);
       }
@@ -272,8 +297,8 @@
     gameOverScreen: '#quiz-gameover-screen'
   };
 
-  $.fn.quiz = function(options) {
-    return this.each(function() {
+  $.fn.quiz = function (options) {
+    return this.each(function () {
       new $.quiz(this, options);
     });
   };
