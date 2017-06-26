@@ -1,11 +1,14 @@
 <?php
 
     $filePath = "./assets/data/";
+    $quizFiles = ['beginner-1' => 'quiz-b1.json',
+    'beginner-2' => 'quiz-b2.json',
+    'intermediate-1' => 'quiz-i1.json' ];
 
     $data = file_get_contents($filePath . "results.json");
     $data = json_decode($data, true);
 
-    $answers = file_get_contents($filePath . "quiz.json");
+    $answers = file_get_contents($filePath . $quizFiles[$_POST['level']]);
     $answers = json_decode($answers, true);
 
     $correctAnswers = [];
@@ -46,4 +49,4 @@
 
     $badabouf = file_put_contents($filePath . "results.json", $data);
 
-    echo "1 - ".$badabouf;
+    echo "1";
