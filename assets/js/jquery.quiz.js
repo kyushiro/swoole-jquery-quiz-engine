@@ -5,7 +5,7 @@
   $.quiz = function (el, options) {
     var base = this;
     var submissions = [];
-    var timeStart = Math.round(new Date().getTime() / 1000);
+    var timeStart = 0;
 
     // Access to jQuery version of element
     base.$el = $(el);
@@ -112,6 +112,7 @@
         if (emailValidationExp.test(email)) {
           textEnterEmail.hide();
           textSubTitle.html("Do your best!");
+          timeStart = Math.round(new Date().getTime() / 1000);
         }
         else if (email == "") {
           $(".data-email-input").html('<p class="text-center text-danger">Please enter your email.</p>');
