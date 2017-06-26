@@ -13,8 +13,13 @@
     foreach ($answers as $answer){
         $correctAnswers[] = $answer["correctIndex"];
 
-}
+    }
+
+    $submissions = $_POST["answers"];
+
     var_dump($correctAnswers);
+    echo " // ";
+    var_dump($submissions);
 
     $email = $_POST["email"];
     $data[$email] = [];

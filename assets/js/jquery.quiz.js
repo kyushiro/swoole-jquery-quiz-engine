@@ -4,7 +4,7 @@
 
   $.quiz = function (el, options) {
     var base = this;
-    var submissions = ['answers'];
+    var submissions = [];
     var timeStart = Math.round(new Date().getTime() / 1000);
 
     // Access to jQuery version of element
