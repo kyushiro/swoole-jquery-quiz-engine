@@ -102,6 +102,7 @@
       },
       start: function () {
         var textEnterEmail = $(".text-email");
+        var textSubTitle = $(".sub-title");
         var email = $("#txt-email-input").val();
         var emailValidationExp = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
 
@@ -110,6 +111,7 @@
 
         if (emailValidationExp.test(email)) {
           textEnterEmail.hide();
+          textSubTitle.html("Do your best!");
         }
         else if (email == "") {
           $(".data-email-input").html('<p class="text-center text-danger">Please enter your email.</p>');
@@ -241,6 +243,11 @@
         submitDict['email'] = $('.data-email-input').html();
 
         console.log(submitDict);
+
+        $.post("submit.php", submitDict, function (r) {
+          console.log("inside post");
+          console.log(r);
+        });
 
         if (typeof base.options.finishCallback === 'function') {
           base.options.finishCallback();
