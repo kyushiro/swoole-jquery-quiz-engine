@@ -27,7 +27,7 @@
     $start = (int)$_POST['start'];
     $end = (int)$_POST['end'];
 
-    $interval = round(abs($end - $start) / 60,2);
+    $interval = round(abs($end - $start));
 
 
     $email = $_POST["email"];
