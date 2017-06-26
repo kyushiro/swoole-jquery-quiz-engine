@@ -17,9 +17,23 @@
 
     $submissions = $_POST["answers"];
 
-    var_dump($correctAnswers);
-    echo " // ";
-    var_dump($submissions);
+    $score = 0;
+    $i = 0;
+
+    for($i; $i!=count($correctAnswers); $i++){
+        if ($correctAnswers[$i] == $submissions[$i]) $score++;
+    }
+
+    $start = (int)$_POST['start'];
+    $end = (int)$_POST['end'];
+
+    $interval = round(abs($end - $start) / 60,2);
+
 
     $email = $_POST["email"];
+
+    echo "interval is $interval, ";
+    echo "You have $score good answers and ";
+    echo "you are $email";
+
     $data[$email] = [];
