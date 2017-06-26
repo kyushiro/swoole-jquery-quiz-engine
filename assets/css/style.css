@@ -129,9 +129,59 @@ input{
     color: #cc0000;
     font-size: 80%;
 }
+.text-block{
+    display: block;
+}
 .data-email-input{
     font-weight: 700;
     font-family: 'Handlee', cursive;
     color: #545d9b;
     font-size: 1.2em;
+}
+.text-dropdown{
+    width: 100%;
+}
+.btn{
+    background: #2dabf9 linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%) repeat scroll 0 0!important;
+    border: 1px solid #0688fa;
+    border-radius: 3px;
+    box-shadow: 0 -3px 7px 0 #29bbff inset;
+    color: #ffffff!important;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 15px;
+    padding: 9px 23px;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #263666;
+}
+.container-level{
+    margin-top: 2.5em;
+}
+.container-level .row{
+    display: flex;
+}
+.b1{
+     width: 24%;
+     background: #f24537 linear-gradient(to bottom, #f24537 5%, #c62d1f 100%);
+     margin-right: 1em;
+ }
+.b2{
+     width: 22%;
+     background: #ffc477 linear-gradient(to bottom, #ffc477 5%, #fb9e25 100%);
+     margin-right: 1em;
+     margin-left: 5em;
+    margin-bottom: 0.2em;
+ }
+.b3{
+     width: 22%;
+     background: #89c403 linear-gradient(to bottom, #89c403 5%, #77a809 100%) repeat scroll 0 0;
+     margin-right: 1em;
+    margin-left: 10em;
+    margin-bottom: 0.2em;
+ }
+
+.flex-item .text-link{
+    background: transparent;
+    color: #fff;
+    padding: .4em .3em;
 }
