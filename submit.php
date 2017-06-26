@@ -5,10 +5,13 @@
     'beginner-2' => 'quiz-b2.json',
     'intermediate-1' => 'quiz-i1.json' ];
 
-    $data = file_get_contents($filePath . "results.json");
+    $resultpath = $filePath."results.json";
+    $quizPath = $filePath . $quizFiles[$_POST['level']];
+
+    $data = file_get_contents($resultpath);
     $data = json_decode($data, true);
 
-    $answers = file_get_contents($filePath . $quizFiles[$_POST['level']]);
+    $answers = file_get_contents($quizPath);
     $answers = json_decode($answers, true);
 
     $correctAnswers = [];
@@ -47,6 +50,9 @@
     $data = json_encode($data);
     var_dump($data);
 
-    file_put_contents($filePath . "results.json", $data);
+    if (!file_put_contents($resultpath, $data)) {
+        echo "0";
+        die();
+    }
 
     echo "1";
