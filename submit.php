@@ -44,6 +44,6 @@
     $data = json_encode($data);
     var_dump($data);
 
-    $badabouf = file_put_contents($filePath . "results.json");
+    $badabouf = file_put_contents($filePath . "results.json", $data);
 
     echo "1 - ".$badabouf;
