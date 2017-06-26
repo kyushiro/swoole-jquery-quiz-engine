@@ -119,3 +119,18 @@ input{
     background: #88449a;
     color: #fff;
 }
+
+/* Typo */
+.text-center{
+    text-align: center;
+}
+.text-danger{
+    color: #cc0000;
+    font-size: 80%;
+}
+.data-email-input{
+    font-weight: 700;
+    font-family: 'Handlee', cursive;
+    color: #545d9b;
+    font-size: 1.2em;
+}
