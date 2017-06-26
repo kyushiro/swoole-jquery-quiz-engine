@@ -101,12 +101,18 @@
         $('#quiz-controls').hide();
       },
       start: function() {
-
+        var textEnterEmail = $(".text-email");
         var email = $("#txt-email-input").val();
+
+        textEnterEmail.show();
+
         if (email == ""){
             $(".data-email-input").html("please enter your email");
             return;
-        } 
+        }
+        else{
+          textEnterEmail.hide();
+        }
 
         $('.data-email-input').html(email);
         $("#txt-email-input").hide();
