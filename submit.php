@@ -1,2 +1,2 @@
 <?php
-echo "badaboum";
+    var_dump($_POST);
