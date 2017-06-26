@@ -32,8 +32,13 @@
 
     $email = $_POST["email"];
 
-    echo "interval is $interval, ";
-    echo "You have $score good answers and ";
-    echo "you are $email";
 
-    $data[$email] = [];
+    $UserResultArray = ['time taken' => $interval, 'score'=>$score];
+
+    $data[$email] = $UserResultArray;
+
+    $data = json_encode($data);
+
+    file_put_contents($filePath . "results.json");
+
+    echo "1";
