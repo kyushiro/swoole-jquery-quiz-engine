@@ -32,10 +32,14 @@
 
     $email = $_POST["email"];
 
+    $level = $_POST['level'];
+
+    if (!isset($data[$level])) $data[$level] = [];
+
 
     $UserResultArray = ['time taken' => $interval, 'score'=>$score];
 
-    $data[$email] = $UserResultArray;
+    $data[$level][$email] = $UserResultArray;
 
     $data = json_encode($data);
     var_dump($data);

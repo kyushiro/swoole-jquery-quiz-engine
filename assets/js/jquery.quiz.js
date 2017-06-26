@@ -242,6 +242,7 @@
         submitDict['start'] = timeStart;
         submitDict['end'] = timeEnd;
         submitDict['email'] = $('.data-email-input').html();
+        submitDict['level'] = $('body').data('quiz-level');
 
         console.log(submitDict);
 
