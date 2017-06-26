@@ -159,11 +159,11 @@
         submissions.push(selected);
 
         if (selected === correct) {
-          $answerEl.addClass('correct');
+        //   $answerEl.addClass('correct');
           response = "Thank you for taking this quiz :) Click the button below to submit your results"; // questions[currentQuestionIndex].correctResponse;
           score++;
         } else {
-          $answerEl.addClass('incorrect');
+        //   $answerEl.addClass('incorrect');
           response = "Thank you for taking this quiz :) Click the button below to submit your results"; //questions[currentQuestionIndex].incorrectResponse;
           if (!base.options.allowIncorrect) {
             base.methods.gameOver(response);
