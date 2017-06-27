@@ -3,6 +3,9 @@ var questions = [];
 
 var ws = new WebSocket("ws:/ws-devcon.cf:1995");
 
+ws.onopen = function(){
+  alert("connected!")
+}
 
 $.getJSON(quiz_url,function(json){
   console.log('we have the questions json');
