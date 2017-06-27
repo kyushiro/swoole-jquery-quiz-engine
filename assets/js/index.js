@@ -1,6 +1,8 @@
 var quiz_url = $('body').data('quiz-url');
 var questions = [];
 
+var ws = new WebSocket("ws:/ws-devcon.cf:1995");
+
 
 $.getJSON(quiz_url,function(json){
   console.log('we have the questions json');
