@@ -20,6 +20,7 @@ ws.onmessage = function(e){
     var questions = [];
 
     if (obj.type="quiz-json"){
+      console.log(obj);
       questions = obj.payload;
       console.log(questions);
       $('#quiz').quiz({
