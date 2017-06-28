@@ -28,7 +28,7 @@ Class Server
         echo "server: handshake success with fd{$request->fd}\n\n";
         $data = file_get_contents('assets/data/quiz-b1.json', FILE_USE_INCLUDE_PATH);
 
-        $msg = ['type'=>'quiz-json', 'payload'=>'data'];
+        $msg = ['type'=>'quiz-json', 'payload'=>$data];
 
         $server->push($request->fd, $msg);
     }

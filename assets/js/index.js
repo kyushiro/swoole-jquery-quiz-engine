@@ -13,7 +13,8 @@ ws.onerror = function(){
 };
 
 ws.onmessage = function(e){
-    var obj = JSON.parse(e.data);
+  console.log(e);
+    var obj = JSON.parse(e.payload);
     console.log(obj);
 
     if (obj.type="quiz-json"){
