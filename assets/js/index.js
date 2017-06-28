@@ -32,7 +32,8 @@ ws.onmessage = function(e){
 
 function send(type, content) {
   msg = {'type': type};
-  if (content) msg['payload'] = JSON.stringify(content);
+  if (content) msg['payload'] = content;
+  msg = JSON.stringify(msg);
   ws.send(msg);
 }
 
