@@ -15,11 +15,11 @@ ws.onerror = function(){
 ws.onmessage = function(e){
 
     var obj = JSON.parse(e.data);
-    obj = obj.payload;
+    // obj = obj.payload;
 
     var questions = [];
 
-    if (obj.type="quiz-json"){
+    if (obj.type=="quiz-json"){
       console.log(obj);
       questions = obj.payload;
       console.log(questions);
