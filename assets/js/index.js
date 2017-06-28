@@ -14,7 +14,7 @@ ws.onerror = function(){
 
 ws.onmessage = function(e){
     console.log(e);
-    var obj = JSON.parse(e.data.payload);
+    var obj = JSON.parse(e).data.payload;
     console.log(obj);
 
     if (obj.type="quiz-json"){
