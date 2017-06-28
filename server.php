@@ -39,8 +39,14 @@ Class Server
 
     Public function onMessage(swoole_websocket_server $server, $frame){
         echo "receive from {$frame->fd}: {$frame->data}, opcode:{$frame->opcode}, fin: {$frame->finish}\n";
-        // $data = file_get_contents($this->file, FILE_USE_INCLUDE_PATH);
-        // $data = json_decode($data,true);
+
+        $file = 'assets/data/temp_results.json';
+        
+        $data = file_get_contents($file);
+        $data = json_decode($data,true);
+        echo "---\n";
+        var_dump($frame->data);
+        
         // if(array_key_exists($frame->data,$data)) $data[$frame->data] = $data[$frame->data] + 1;
         // else $data[$frame->data] = 1;
 
