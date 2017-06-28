@@ -30,8 +30,8 @@ ws.onmessage = function(e){
 
 
 function send(type, content) {
-  $msg = {'type': type};
-  if (content) $msg['payload'] = JSON.stringify(content);
+  msg = {'type': type};
+  if (content) msg['payload'] = JSON.stringify(content);
   ws.send(msg);
 }
 
