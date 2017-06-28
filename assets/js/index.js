@@ -1,5 +1,5 @@
 var quiz_url = $('body').data('quiz-url');
-var questions = [];
+
 
 var ws = new WebSocket("ws:/ws-devcon.cf:1995");
 
@@ -14,10 +14,11 @@ ws.onerror = function(){
 
 ws.onmessage = function(e){
     console.log(e.data);
-    alert(e.data);
     var obj = JSON.parse(e.data);
     obj = obj.payload;
     console.log(obj);
+
+    var questions = [];
 
     if (obj.type="quiz-json"){
       questions = obj.payload;
