@@ -32,7 +32,6 @@
 
         $(document).on('click', startButton, function (e) {
           e.preventDefault();
-          alert(ws);
           base.methods.start();
         });
 
@@ -160,14 +159,24 @@
           currentQuestionIndex = currentQuestion - 1,
           correct = questions[currentQuestionIndex].correctIndex;
 
+        var type = 'send-one-answer';
+        var content = {
+          'question' : currentQuestionIndex,
+          'chosen_answer':selected,
+          'correct_answer':correct,
+          'email': $('.data-email-input').html()          
+        }
+
+        send(type, content);
+
         submissions.push(selected);
 
         if (selected === correct) {
-        //   $answerEl.addClass('correct');
+          //   $answerEl.addClass('correct');
           response = "Thank you for taking this quiz :) Click the button below to submit your results"; // questions[currentQuestionIndex].correctResponse;
           score++;
         } else {
-        //   $answerEl.addClass('incorrect');
+          //   $answerEl.addClass('incorrect');
           response = "Thank you for taking this quiz :) Click the button below to submit your results"; //questions[currentQuestionIndex].incorrectResponse;
           if (!base.options.allowIncorrect) {
             base.methods.gameOver(response);
@@ -185,7 +194,6 @@
         if (typeof base.options.answerCallback === 'function') {
           base.options.answerCallback(currentQuestion, selected === correct);
         }
-
       },
       nextQuestion: function () {
         answerLocked = false;
@@ -198,6 +206,8 @@
           .addClass('active-question');
 
         $('#quiz-controls').hide();
+
+
 
         // check to see if we are at the last question
         if (++currentQuestion === numQuestions) {

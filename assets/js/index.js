@@ -37,13 +37,3 @@ function send(type, content) {
   msg = JSON.stringify(msg);
   ws.send(msg);
 }
-
-
-// $.getJSON(quiz_url,function(json){
-//   console.log('we have the questions json');
-//   console.log(json);
-//   console.log('now we convert it to the format used by our friend $.quiz below');
-//   questions = json;
-
-
-// });
