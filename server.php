@@ -26,7 +26,7 @@ Class Server
     Public function onOpen(swoole_websocket_server $server, $request){
 
         echo "server: handshake success with fd{$request->fd}\n\n";
-        $data = file_get_contents('assets/data/quiz-b1.json', FILE_USE_INCLUDE_PATH);
+        $data = file_get_contents('assets/data/quiz-b1.json');
 
         $msg = ['type'=>'quiz-json', 'payload'=>json_decode($data)];
 

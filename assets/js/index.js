@@ -14,6 +14,7 @@ ws.onerror = function(){
 
 ws.onmessage = function(e){
     console.log(e);
+    alert(e);
     var obj = JSON.parse(e);
     obj = obj.data.payload;
     console.log(obj);
