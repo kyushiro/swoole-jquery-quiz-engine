@@ -32,6 +32,7 @@
 
         $(document).on('click', startButton, function (e) {
           e.preventDefault();
+          alert(ws);
           base.methods.start();
         });
 

@@ -24,9 +24,6 @@ ws.onmessage = function(e){
       questions = obj.payload;
       console.log(questions);
       $('#quiz').quiz({
-        //resultsScreen: '#results-screen',
-        //counter: false,
-        //homeButton: '#custom-home',
         counterFormat: 'Question %current of %total',
         questions: questions
       });
