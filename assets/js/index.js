@@ -13,15 +13,15 @@ ws.onerror = function(){
 };
 
 ws.onmessage = function(e){
-    console.log(e.data);
+
     var obj = JSON.parse(e.data);
     obj = obj.payload;
-    console.log(obj);
 
     var questions = [];
 
     if (obj.type="quiz-json"){
       questions = obj.payload;
+      console.log(questions);
       $('#quiz').quiz({
         //resultsScreen: '#results-screen',
         //counter: false,
