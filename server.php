@@ -30,6 +30,8 @@ Class Server
 
         $msg = ['type'=>'quiz-json', 'payload'=>$data];
 
+        $msg = json_encode($msg);
+
         $server->push($request->fd, $msg);
     }
 
