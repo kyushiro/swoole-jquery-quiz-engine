@@ -13,7 +13,7 @@ ws.onerror = function(){
 };
 
 ws.onmessage = function(e){
-  console.log(e);
+    console.log(e.payload);
     var obj = JSON.parse(e.payload);
     console.log(obj);
 
