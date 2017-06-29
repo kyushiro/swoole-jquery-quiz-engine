@@ -110,8 +110,9 @@ Class Server
                 $msg_container['payload'][$level] = [];
 
                 foreach ($results as $email=>$participant){
+                    $msg_container['payload'][$level][$email] = [];
                     if (!$participant['finished']) continue;
-                    $msg_container['payload'][$level] []= $results[$email];
+                    $msg_container['payload'][$level][$email] []= $results[$email];
                 }
             }
 
@@ -132,7 +133,9 @@ Class Server
                 $msg_container['payload'][$level] = [];
 
                 foreach ($result as $email=>$participant){
-                    $msg_container['payload'][$level] []= $result[$email];
+                    msg_container['payload'][$level][$email] = [];
+                    
+                    $msg_container['payload'][$level][$email] []= $result[$email];
                 }
             }
 
