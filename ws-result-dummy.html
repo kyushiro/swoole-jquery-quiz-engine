@@ -84,10 +84,25 @@ ws.onmessage = function(e){
 function rankAndShow(results){
   console.log(results);
 
-  for(level in results){
+  for(level in results){  
     console.log(level);
     console.log(results[level]);
     console.log('----')
+
+    var thisTable = $(".tbl-result.template").clone()
+      .removeAttr('style')
+      .removeClass('template')
+      .addClass(level);
+    
+    thisTable.find('.txt-level').html(level);
+
+    $(".result-container").append(thisTable);
+
+
+
+
+  
+
   }
   
 }
