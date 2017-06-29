@@ -16,6 +16,11 @@
 <div class="quiz-container text-center">
   <h1>Frontend Code Camp Quiz Result</h1>
 
+  <h2 class="timer">
+    <span class="cd-min">15</span>:
+    <span class="cd-sec">00</span>
+  </h2>
+
   <div class="result-container">
     <h2>Level: Beginner level 1</h2>
     <table>
@@ -68,8 +73,23 @@ ws.onopen = function(){
 
 ws.onmessage = function(e){
     var obj = JSON.parse(e.data);
-    console.log(obj); 
+    console.log(obj); // we've got the json here
 }
+
+function countdown(){
+  var mins = parseInt($('.cd-min').html());
+  var secs = parseInt($('.cd-sec').html());
+  if (secs==0 && mins!=0){
+    secs=59;
+    mins--;
+  } else if (secs!=0){
+    secs--;
+  } else if (secs==0 && mins!=0) {
+    alert('countdown over!');
+  }
+}
+
+countdowninterval = window.setInterval(countdown,1000);
 </script>
 </body>
 </html>
