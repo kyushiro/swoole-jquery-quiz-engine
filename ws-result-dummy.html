@@ -102,7 +102,7 @@ function rankAndShow(results){
 
     for(email in results[level]){
 
-      console.log($('tr[data-email="'+email+'"]').length);
+      if ($('tr[data-email="'+email+'"]').length == 1) continue;
 
       if (!(results[level][email][0].hasOwnProperty('duration'))) results[level][email][0]['duration'] = 900000;
       var thisRow = thisTable.find('tr.template').clone()
