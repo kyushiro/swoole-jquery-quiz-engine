@@ -86,6 +86,8 @@ function countdown(){
     secs--;
   } else if (secs==0 && mins!=0) {
     alert('countdown over!');
+    window.clearInterval(countdowninterval);
+    
   }
 
   $('.cd-min').html(mins)
