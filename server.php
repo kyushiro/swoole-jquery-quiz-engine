@@ -109,9 +109,9 @@ Class Server
             foreach($data as $level=>$results){
                 $msg_container['payload'][$level] = [];
 
-                foreach ($result as $email=>$participant){
+                foreach ($results as $email=>$participant){
                     if (!$participant['finished']) continue;
-                    $msg_container['payload'][$level] []= $result[$email];
+                    $msg_container['payload'][$level] []= $results[$email];
                 }
             }
 
