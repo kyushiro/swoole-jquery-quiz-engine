@@ -165,7 +165,7 @@
           'chosen_answer':selected,
           'correct_answer':correct,
           'email': $('.data-email-input').html(),
-          'level': $('body').data('quiz-url');          
+          'level': $('body').data('quiz-url')         
         }
 
         send(type, content);
