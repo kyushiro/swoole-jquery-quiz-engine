@@ -126,17 +126,21 @@ function rankAndShow(results){
 
         if (thisRow.data('weight') > currentRow.data('weight')){
           currentRow.before(thisRow);
+                  console.log('----------------');
+        console.log('email:',email);
+        console.log('weight:',thisRow.data('weight'));
           return false;
         } else if (thisRow.data('weight') == currentRow.data('weight')){
           if (thisRow.data('time') < currentRow.data('time')){
             currentRow.before(thisRow);
+                    console.log('----------------');
+        console.log('email:',email);
+        console.log('weight:',thisRow.data('weight'));
             return false;
           }
         }
 
-console.log('----------------');
-         console.log('email:',email);
-        console.log('weight:',thisRow.data('weight'));
+
 
       });
       // .append(thisRow);
