@@ -22,10 +22,12 @@
   </h2>
 
   <div class="result-container">
+    
+    <div class="result template" style="display:none">
+
     <h2>Level: <span class="txt-level">Beginner</span> </h2>
     
-    
-    <table class='tbl-result template' style="display:none">
+    <table class='tbl-result'>
       <thead>
       <tr>
         <th>Email address</th>
@@ -41,6 +43,9 @@
       </tr>
       </tbody>
     </table>
+
+    </div>
+
 
 
   </div>
@@ -89,7 +94,7 @@ function rankAndShow(results){
     console.log(results[level]);
     console.log('----')
 
-    var thisTable = $(".tbl-result.template").clone()
+    var thisTable = $(".result.template").clone()
       .removeAttr('style')
       .removeClass('template')
       .addClass(level);
