@@ -62,12 +62,12 @@ var ws = new WebSocket("ws:/ws-devcon.cf:1995");
 
 ws.onopen = function(){
   console.log("connected!")
-  ws.send('fetch-completed-only');
+  ws.send({'type':'fetch-completed-only'});
 }
 
 ws.onmessage = function(e){
     var obj = JSON.parse(e.data);
-    console.log(obj);
+    console.log(obj); 
 }
 </script>
 </body>
