@@ -122,7 +122,7 @@ Class Server
 
         }
 
-        else if ($submitted['type'] == 'ender'){
+        else if ($submitted['type'] == 'close-quiz'){
             $data = ['type'=>'close-quiz','payload'=>'ok'];
             foreach($server->connections as $fd){
                 if ($fd != $frame->fd)
