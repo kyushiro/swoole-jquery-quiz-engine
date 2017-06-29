@@ -43,16 +43,18 @@ Class Server
             $msg = json_encode($msg);
             return $server->push($frame->fd, $msg);
         }
+        else if ($submitted['type'] == 'send-one-answer'){
+            $file = 'assets/data/temp_results.json';
+            $data = file_get_contents($file);
+            $data = json_decode($data,true);
+            echo "---\n";
+            var_dump($submitted['payload']);
+
+        }
 
 
         
 
-        // $file = 'assets/data/temp_results.json';
-        
-        // $data = file_get_contents($file);
-        // $data = json_decode($data,true);
-        // echo "---\n";
-        // var_dump($frame->data);
 
 
         
