@@ -107,9 +107,9 @@ function rankAndShow(results){
         .removeClass('template')
         .addClass('result-row')
         .removeAttr('style')
-        .data('weight',results[level][email][0]['score'])
-        .data('time', results[level][email][0]['duration'])
-        .data('email',email);
+        .attr('data-weight',results[level][email][0]['score'])
+        .attr('data-time', results[level][email][0]['duration'])
+        .attr('data-email',email);
 
       var dur = results[level][email][0]['duration'] / 1000;
       
@@ -126,16 +126,12 @@ function rankAndShow(results){
 
         if (thisRow.data('weight') > currentRow.data('weight')){
           currentRow.before(thisRow);
-                  console.log('----------------');
-        console.log('email:',email);
-        console.log('weight:',thisRow.data('weight'));
+
           return false;
         } else if (thisRow.data('weight') == currentRow.data('weight')){
           if (thisRow.data('time') < currentRow.data('time')){
             currentRow.before(thisRow);
-                    console.log('----------------');
-        console.log('email:',email);
-        console.log('weight:',thisRow.data('weight'));
+;
             return false;
           }
         }
