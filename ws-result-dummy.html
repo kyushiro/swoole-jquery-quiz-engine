@@ -17,28 +17,32 @@
   <h1>Frontend Code Camp Quiz Result</h1>
 
   <h2 class="timer">
-    <span class="cd-min">10</span>:
+    <span class="cd-min">15</span>:
     <span class="cd-sec">00</span>
   </h2>
 
   <div class="result-container">
-    <h2>Level: Beginner level 1</h2>
-    <table>
+    <h2>Level: <span class="txt-level">Beginner</span> </h2>
+    
+    
+    <table class='tbl-result template' style="display:none">
       <thead>
       <tr>
         <th>Email address</th>
-        <th>Question reply correctly</th>
+        <th>Score</th>
         <th>Time</th>
       </tr>
       </thead>
       <tbody>
       <tr>
-        <td>example@info.fr</td>
-        <td>3</td>
-        <td>15 mins</td>
+        <td class='txt-email'>example@info.fr</td>
+        <td class='txt-score'>3</td>
+        <td class='txt-time'>120s</td>
       </tr>
       </tbody>
     </table>
+
+
   </div>
   
   <!--<div class="result-container">-->
@@ -73,8 +77,15 @@ ws.onopen = function(){
 
 ws.onmessage = function(e){
     var obj = JSON.parse(e.data);
-    console.log(obj); // we've got the json here
+    rankAndShow(obj);
+
 }
+
+function rankAndShow(results){
+  console.log(results);
+}
+
+
 
 function countdown(){
   var mins = parseInt($('.cd-min').html(), 10);
@@ -94,7 +105,6 @@ function countdown(){
   $('.cd-sec').html((secs >= 10) ? secs : '0'+secs);
 
 }
-
 countdowninterval = window.setInterval(countdown,1000);
 </script>
 </body>
