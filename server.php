@@ -95,8 +95,7 @@ Class Server
 
             foreach($server->connections as $fd){
                 $server->push($fd, $data);
-            }
-            
+            }            
         }
 
 
@@ -143,24 +142,6 @@ Class Server
 
         }
 
-
-
-
-
-        
-
-
-
-        
-        // if(array_key_exists($frame->data,$data)) $data[$frame->data] = $data[$frame->data] + 1;
-        // else $data[$frame->data] = 1;
-
-        // $enc_data = json_encode($data);
-
-        // foreach($server->connections as $fd){
-        //     $server->push($fd, $enc_data);
-        // }
-        // file_put_contents($this->file, $enc_data);
 
     }
 
