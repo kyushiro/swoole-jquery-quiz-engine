@@ -99,7 +99,7 @@ Class Server
         }
 
 
-        else if ($submitted['type'] == 'fetch-completed-only'){
+        else if ($submitted['type'] == 'fetch-results'){
             $file = 'assets/data/temp_results.json';
             $data = file_get_contents($file);
             $msg_container = ['type'=>'results-completed-only', 'payload'=>[]];
@@ -110,8 +110,8 @@ Class Server
                 $msg_container['payload'][$level] = [];
 
                 foreach ($results as $email=>$participant){
+                    if (($submitted['payload']=='completed') && (!$participant['finished'])) continue;
                     $msg_container['payload'][$level][$email] = [];
-                    if (!$participant['finished']) continue;
                     $msg_container['payload'][$level][$email] []= $results[$email];
                 }
             }

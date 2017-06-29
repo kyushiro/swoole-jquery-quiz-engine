@@ -62,7 +62,7 @@ var ws = new WebSocket("ws:/ws-devcon.cf:1995");
 
 ws.onopen = function(){
   console.log("connected!");
-  var obj = {'type':'fetch-completed-only'};
+  var obj = {'type':'fetch-results', 'payload':'completed'};
   ws.send(JSON.stringify(obj));
 }
 
