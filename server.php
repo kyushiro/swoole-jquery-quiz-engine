@@ -34,7 +34,6 @@ Class Server
     Public function onMessage(swoole_websocket_server $server, $frame){
         echo "receive from {$frame->fd}: {$frame->data}, opcode:{$frame->opcode}, fin: {$frame->finish}\n";
 
-
         $submitted = json_decode($frame->data,true);
 
         if ($submitted['type'] == 'get-quiz-data'){
@@ -47,8 +46,6 @@ Class Server
             $file = 'assets/data/temp_results.json';
             $data = file_get_contents($file);
             $data = json_decode($data,true);
-            echo "---\n";
-            var_dump($submitted['payload']);
 
             $level = $submitted['payload']['level'];
             $email = $submitted['payload']['email'];
@@ -77,6 +74,7 @@ Class Server
     
         }
         else if ($submitted['type'] == 'finished'){
+            echo "/////";
             $file = 'assets/data/temp_results.json';
             $data = file_get_contents($file);
             $data = json_decode($data,true);
