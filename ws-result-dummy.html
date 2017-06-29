@@ -21,6 +21,8 @@
     <span class="cd-sec">30</span>
   </h2>
 
+  <button id="start-quiz"></button>
+
   <div class="result-container">
     
     <div class="result template" style="display:none">
@@ -82,8 +84,8 @@ ws.onopen = function(){
 
 ws.onmessage = function(e){
     var obj = JSON.parse(e.data);
-    rankAndShow(obj.payload);
 
+    if (obj.type='results-completed-only') rankAndShow(obj.payload);
 }
 
 function rankAndShow(results){
@@ -167,6 +169,8 @@ function countdown(){
     ws.send(JSON.stringify(obj));
     window.clearInterval(countdowninterval);
     
+    var ender = {'type':'close-quiz','payload':'ok'};
+    ws.send(JSON.stringify(ender));
   }
 
   $('.cd-min').html((mins >= 10) ? mins : '0'+mins);
