@@ -122,28 +122,28 @@ Class Server
 
         }
 
-        else if ($submitted['type'] == 'fetch-all'){
-            $file = 'assets/data/temp_results.json';
-            $data = file_get_contents($file);
-            $msg_container = ['type'=>'results-completed-only', 'payload'=>[]];
+        // else if ($submitted['type'] == 'fetch-all'){
+        //     $file = 'assets/data/temp_results.json';
+        //     $data = file_get_contents($file);
+        //     $msg_container = ['type'=>'results-completed-only', 'payload'=>[]];
            
-            $data = json_decode($data,true);
+        //     $data = json_decode($data,true);
             
-            foreach($data as $level=>$results){
-                $msg_container['payload'][$level] = [];
+        //     foreach($data as $level=>$results){
+        //         $msg_container['payload'][$level] = [];
 
-                foreach ($result as $email=>$participant){
-                    msg_container['payload'][$level][$email] = [];
+        //         foreach ($result as $email=>$participant){
+        //             msg_container['payload'][$level] = [];
                     
-                    $msg_container['payload'][$level][$email] []= $result[$email];
-                }
-            }
+        //             $msg_container['payload'][$level][$email] []= $result[$email];
+        //         }
+        //     }
 
-            $msg = json_encode($msg_container);
+        //     $msg = json_encode($msg_container);
 
-            return $server->push($frame->fd, $msg);
+        //     return $server->push($frame->fd, $msg);
 
-        }
+        // }
 
 
     }
