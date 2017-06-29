@@ -77,7 +77,7 @@ ws.onopen = function(){
 
 ws.onmessage = function(e){
     var obj = JSON.parse(e.data);
-    rankAndShow(obj);
+    rankAndShow(obj.payload);
 
 }
 
