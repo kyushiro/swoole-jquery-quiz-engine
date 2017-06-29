@@ -77,8 +77,8 @@ ws.onmessage = function(e){
 }
 
 function countdown(){
-  var mins = parseInt($('.cd-min').html());
-  var secs = parseInt($('.cd-sec').html());
+  var mins = parseInt($('.cd-min').html(), 10);
+  var secs = parseInt($('.cd-sec').html(), 10);
   if (secs==0 && mins!=0){
     secs=59;
     mins--;

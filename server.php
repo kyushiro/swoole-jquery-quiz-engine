@@ -110,7 +110,7 @@ Class Server
                 $msg_container['payload'][$level] = [];
 
                 foreach ($results as $email=>$participant){
-                    if (($submitted['payload']=='completed') && (!$participant['finished'])) continue;
+                    if (($submitted['payload']=='completed') && (!isset($participant['finished']))) continue;
                     $msg_container['payload'][$level][$email] = [];
                     $msg_container['payload'][$level][$email] []= $results[$email];
                 }
