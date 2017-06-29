@@ -108,9 +108,10 @@ function rankAndShow(results){
       var thisRow = thisTable.find('tr.template').clone()
         .removeClass('template')
         .removeAttr('style')
-        .data('weight',10);
+        .data('weight',results[level][email][0]['score']);
       
       thisRow.find('td.txt-email').html(email);
+      thisRow.find('td.txt-score').html(results[level][email][0]['score']);
 
 
       thisTable.find('tbody').append(thisRow);
