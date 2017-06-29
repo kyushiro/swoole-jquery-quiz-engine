@@ -250,18 +250,22 @@
         var timeEnd = new Date().getTime();
 
         var submitDict = {};
-        submitDict['answers'] = submissions;
+        // submitDict['answers'] = submissions;
         submitDict['start'] = timeStart;
         submitDict['end'] = timeEnd;
         submitDict['email'] = $('.data-email-input').html();
         submitDict['level'] = $('body').data('quiz-level');
 
+        var type = 'finished';
+
+        send(type,submitDict);
+
         console.log(submitDict);
 
-        $.post("submit.php", submitDict, function (r) {
-          console.log("inside post");
-          console.log(r);
-        });
+        // $.post("submit.php", submitDict, function (r) {
+        //   console.log("inside post");
+        //   console.log(r);
+        // });
 
         if (typeof base.options.finishCallback === 'function') {
           base.options.finishCallback();

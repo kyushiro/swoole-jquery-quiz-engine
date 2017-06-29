@@ -76,6 +76,26 @@ Class Server
             file_put_contents($file,$newjson);
     
         }
+        else if ($submitted['type'] == 'finished'){
+            $file = 'assets/data/temp_results.json';
+            $data = file_get_contents($file);
+            $data = json_decode($data,true);
+
+            $level = $submitted['payload']['level'];
+            $email = $submitted['payload']['email'];
+
+            $start = (int)$submitted['payload']['start'];
+            $end   = (int)$submitted['payload']['end'];
+
+            $interval = round(abs($end - $start));
+
+            $data[$level][$email]['finished'] = 1;
+            $data[$level][$email]['duration'] = $interval;
+
+            $newjson = json_encode($data);
+            file_put_contents($file,$newjson);
+            
+        }        
 
 
         
