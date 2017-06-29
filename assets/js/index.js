@@ -1,10 +1,7 @@
-var quiz_url = $('body').data('quiz-url');
-
-
 var ws = new WebSocket("ws:/ws-devcon.cf:1995");
 
 ws.onopen = function(){
-  console.log("connected!")
+  console.log("connected!");
   var level = $('body').data('quiz-level');
   send('get-quiz-data', level);
 }
