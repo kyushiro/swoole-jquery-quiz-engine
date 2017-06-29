@@ -56,6 +56,7 @@ Class Server
             if ( !isset($data[$level]) ) $data[$level] = [];
             if ( !isset($data[$level][$email]) ) $data[$level][$email] = [];
             if ( !isset($data[$level][$email]['score']) ) $data[$level][$email]['score'] = 0;
+            if ( !isset($data[$level][$email]['answers']) ) $data[$level][$email]['answers'] = [];
             
             $res = [];
 
@@ -69,7 +70,7 @@ Class Server
             $res['answer'] = $submitted['payload']["chosen_answer"];
 
 
-            $data[$level][$email] []= $res;
+            $data[$level][$email]['answers'] []= $res;
             $newjson = json_encode($data);
 
             file_put_contents($file,$newjson);
