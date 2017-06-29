@@ -26,6 +26,7 @@ ws.onmessage = function(e){
         questions: questions
       });
     }
+    else if (obj.type=="close-quiz") alert('finiii');
 };
 
 

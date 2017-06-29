@@ -122,6 +122,14 @@ Class Server
 
         }
 
+        else if ($submitted['type'] == 'ender'){
+            $data = ['type'=>'close-quiz','payload'=>'ok'];
+            foreach($server->connections as $fd){
+                if ($fd != $frame->fd)
+                    $server->push($fd, json_encode($data));
+            }
+        }
+
         // else if ($submitted['type'] == 'fetch-all'){
         //     $file = 'assets/data/temp_results.json';
         //     $data = file_get_contents($file);
