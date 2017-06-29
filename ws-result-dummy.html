@@ -107,6 +107,7 @@ function rankAndShow(results){
     for(email in results[level]){
       console.log("email already here?", thisTable.find('tr[data-email="'+email+'"]').length);
       if (thisTable.find('tr[data-email="'+email+'"]').length==1) continue;
+      alert(thisTable.find('tr[data-email="'+email+'"]').length);
 
       if (!(results[level][email][0].hasOwnProperty('duration'))) results[level][email][0]['duration'] = 900000;
       var thisRow = thisTable.find('tr.template').clone()
