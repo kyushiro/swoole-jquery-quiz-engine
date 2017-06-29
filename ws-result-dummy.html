@@ -17,7 +17,7 @@
   <h1>Frontend Code Camp Quiz Result</h1>
 
   <h2 class="timer">
-    <span class="cd-min">15</span>:
+    <span class="cd-min">01</span>:
     <span class="cd-sec">00</span>
   </h2>
 
@@ -105,6 +105,7 @@ function rankAndShow(results){
 
     for(email in results[level]){
       console.log(results[level][email][0]);
+      if (!(results[level][email][0].hasOwnProperty('duration'))) results[level][email][0]['duration'] = 900000;
       var thisRow = thisTable.find('tr.template').clone()
         .removeClass('template')
         .removeAttr('style')
@@ -153,8 +154,10 @@ function countdown(){
     mins--;
   } else if (secs!=0){
     secs--;
-  } else if (secs==0 && mins!=0) {
+  } else if (secs==0 && mins==0) {
     alert('countdown over!');
+    var obj = {'type':'fetch-results', 'payload':'all'};
+    ws.send(JSON.stringify(obj));
     window.clearInterval(countdowninterval);
     
   }
