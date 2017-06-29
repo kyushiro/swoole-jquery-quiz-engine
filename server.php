@@ -74,7 +74,6 @@ Class Server
     
         }
         else if ($submitted['type'] == 'finished'){
-            echo "/////";
             $file = 'assets/data/temp_results.json';
             $data = file_get_contents($file);
             $data = json_decode($data,true);
@@ -92,8 +91,60 @@ Class Server
 
             $newjson = json_encode($data);
             file_put_contents($file,$newjson);
+
+
+            foreach($server->connections as $fd){
+                $server->push($fd, $data);
+            }
             
-        }        
+        }
+
+
+        else if ($submitted['type'] == 'fetch-completed-only'){
+            $file = 'assets/data/temp_results.json';
+            $data = file_get_contents($file);
+            $msg_container = ['type'=>'results-completed-only', 'payload'=>[]];
+           
+            $data = json_decode($data,true);
+            
+            foreach($data as $level=>$results){
+                $msg_container['payload'][$level] = [];
+
+                foreach ($result as $email=>$participant){
+                    if (!$participant['finished']) continue;
+                    $msg_container['payload'][$level] []= $result[$email];
+                }
+            }
+
+            $msg = json_encode($msg_container);
+
+            return $server->push($frame->fd, $msg);
+
+        }
+
+        else if ($submitted['type'] == 'fetch-all'){
+            $file = 'assets/data/temp_results.json';
+            $data = file_get_contents($file);
+            $msg_container = ['type'=>'results-completed-only', 'payload'=>[]];
+           
+            $data = json_decode($data,true);
+            
+            foreach($data as $level=>$results){
+                $msg_container['payload'][$level] = [];
+
+                foreach ($result as $email=>$participant){
+                    $msg_container['payload'][$level] []= $result[$email];
+                }
+            }
+
+            $msg = json_encode($msg_container);
+
+            return $server->push($frame->fd, $msg);
+
+        }
+
+
+
 
 
         
