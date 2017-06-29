@@ -36,7 +36,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr>
+      <tr class='tr-result template' style='display:none'>
         <td class='txt-email'>example@info.fr</td>
         <td class='txt-score'>3</td>
         <td class='txt-time'>120s</td>
@@ -103,7 +103,19 @@ function rankAndShow(results){
 
     $(".result-container").append(thisTable);
 
+    for(email in results[level]){
+      console.log(level,email,results[level][email]);
+      var thisRow = thisTable.find('tr.template').clone()
+        .removeClass('template')
+        .removeAttr('style')
+        .data('weight',10);
+      
+      thisRow.find('td.txt-email').html(email);
 
+
+      thisTable.find('tbody').append(thisRow);
+      
+    }
 
 
   
