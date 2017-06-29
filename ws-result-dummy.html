@@ -109,10 +109,12 @@ function rankAndShow(results){
         .removeClass('template')
         .removeAttr('style')
         .data('weight',results[level][email][0]['score']);
+
+      var dur = results[level][email][0]['duration'] / 1000;
       
       thisRow.find('td.txt-email').html(email);
       thisRow.find('td.txt-score').html(results[level][email][0]['score']);
-      thisRow.find('td.txt-time').html(results[level][email][0]['duration'] / 1000);
+      thisRow.find('td.txt-time').html(dur+'s');
 
 
       thisTable.find('tbody').append(thisRow);
