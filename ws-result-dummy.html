@@ -105,8 +105,9 @@ function rankAndShow(results){
     $(".result-container").append(thisTable);
 
     for(email in results[level]){
-      console.log(results[level][email][0]);
+      console.log("email already here?", thisTable.find('tr[data-email="'+email+'"]').length);
       if (thisTable.find('tr[data-email="'+email+'"]').length==1) continue;
+
       if (!(results[level][email][0].hasOwnProperty('duration'))) results[level][email][0]['duration'] = 900000;
       var thisRow = thisTable.find('tr.template').clone()
         .removeClass('template')
