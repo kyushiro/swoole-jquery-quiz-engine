@@ -87,12 +87,8 @@ ws.onmessage = function(e){
 }
 
 function rankAndShow(results){
-  console.log(results);
 
   for(level in results){  
-    console.log(level);
-    console.log(results[level]);
-    console.log('----')
 
     // $('table.'+level).find('tr.result-row').remove();
     var thisTable = $('div.result.'+level).length != 0 ? $('div.result.'+level) : $(".result.template").clone()
@@ -137,6 +133,10 @@ function rankAndShow(results){
             return false;
           }
         }
+
+console.log('----------------');
+         console.log('email:',email);
+        console.log('weight:',thisRow.data('weight'));
 
       });
       // .append(thisRow);
