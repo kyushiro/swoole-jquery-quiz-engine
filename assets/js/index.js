@@ -5,7 +5,8 @@ var ws = new WebSocket("ws:/ws-devcon.cf:1995");
 
 ws.onopen = function(){
   console.log("connected!")
-  // send('get-quiz-data');
+  var level = $('body').data('quiz-url');
+  send('get-quiz-data', level);
 }
 
 ws.onerror = function(){

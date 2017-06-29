@@ -26,13 +26,7 @@ Class Server
     Public function onOpen(swoole_websocket_server $server, $request){
 
         echo "server: handshake success with fd{$request->fd}\n\n";
-        $data = file_get_contents('assets/data/quiz-b1.json');
 
-        $msg = ['type'=>'quiz-json', 'payload'=>json_decode($data)];
-
-        $msg = json_encode($msg);
-
-        $server->push($request->fd, $msg);
     }
 
 
@@ -40,12 +34,27 @@ Class Server
     Public function onMessage(swoole_websocket_server $server, $frame){
         echo "receive from {$frame->fd}: {$frame->data}, opcode:{$frame->opcode}, fin: {$frame->finish}\n";
 
-        $file = 'assets/data/temp_results.json';
+
+        $submitted = json_decode($frame->data,true);
+
+        if ($submitted['type'] == 'get-quiz-data'){
+            $data = file_get_contents($submitted['payload']);
+            $msg = ['type'=>'quiz-json', 'payload'=>json_decode($data)];
+            $msg = json_encode($msg);
+            return $server->push($frame->fd, $msg);
+        }
+
+
         
-        $data = file_get_contents($file);
-        $data = json_decode($data,true);
-        echo "---\n";
-        var_dump($frame->data);
+
+        // $file = 'assets/data/temp_results.json';
+        
+        // $data = file_get_contents($file);
+        // $data = json_decode($data,true);
+        // echo "---\n";
+        // var_dump($frame->data);
+
+
         
         // if(array_key_exists($frame->data,$data)) $data[$frame->data] = $data[$frame->data] + 1;
         // else $data[$frame->data] = 1;
