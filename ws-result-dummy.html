@@ -94,7 +94,8 @@ function rankAndShow(results){
     console.log(results[level]);
     console.log('----')
 
-    var thisTable = $(".result.template").clone()
+    // $('table.'+level).find('tr.result-row').remove();
+    var thisTable = $('table.'+level).length != 0? $('table.'+level) : $(".result.template").clone()
       .removeAttr('style')
       .removeClass('template')
       .addClass(level);
@@ -105,12 +106,15 @@ function rankAndShow(results){
 
     for(email in results[level]){
       console.log(results[level][email][0]);
+      if (thisTable.find('tr[data-email="'+email+'"]').length==1) continue;
       if (!(results[level][email][0].hasOwnProperty('duration'))) results[level][email][0]['duration'] = 900000;
       var thisRow = thisTable.find('tr.template').clone()
         .removeClass('template')
+        .addClass('result-row')
         .removeAttr('style')
         .data('weight',results[level][email][0]['score'])
-        .data('time', results[level][email][0]['duration']);
+        .data('time', results[level][email][0]['duration'])
+        .data('email',email);
 
       var dur = results[level][email][0]['duration'] / 1000;
       
@@ -155,7 +159,6 @@ function countdown(){
   } else if (secs!=0){
     secs--;
   } else if (secs==0 && mins==0) {
-    alert('countdown over!');
     var obj = {'type':'fetch-results', 'payload':'all'};
     ws.send(JSON.stringify(obj));
     window.clearInterval(countdowninterval);
