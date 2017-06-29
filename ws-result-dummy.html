@@ -112,6 +112,7 @@ function rankAndShow(results){
       
       thisRow.find('td.txt-email').html(email);
       thisRow.find('td.txt-score').html(results[level][email][0]['score']);
+      thisRow.find('td.txt-time').html(results[level][email][0]['duration'] / 1000);
 
 
       thisTable.find('tbody').append(thisRow);
