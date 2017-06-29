@@ -31,6 +31,9 @@ h1 {
     color: #333;
     background: #D3D3D3;
 }
+.quiz-container.quiz-container-result{
+    max-width: 80%;
+}
 
 #quiz-header,
 #quiz-start-screen,
@@ -176,7 +179,8 @@ input{
      width: 22%;
      background: #89c403 linear-gradient(to bottom, #89c403 5%, #77a809 100%) repeat scroll 0 0;
      margin-right: 1em;
-    margin-left: 10em;
+    margin-left: 7em;
+    /*margin-left: 10em;*/
     margin-bottom: 0.2em;
  }
 
@@ -187,4 +191,17 @@ input{
 }
 table{
     width: 100%;
+}
+.result {
+    display: inline-block;
+    width: 48%;
+    border-right: 1px dashed #696969;
+    padding: 0 0 10px 0;
+    margin-top: 20px;
+}
+.result:last-child{
+    border-right: none;
+}
+.result-title{
+    text-transform: uppercase;
 }

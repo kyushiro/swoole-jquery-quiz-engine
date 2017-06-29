@@ -13,7 +13,7 @@
 
 <body>
 
-<div class="quiz-container text-center">
+<div class="quiz-container text-center quiz-container-result">
   <h1>Frontend Code Camp Quiz Result</h1>
 
   <h2 class="timer">
@@ -21,163 +21,163 @@
     <span class="cd-sec">30</span>
   </h2>
 
-  <button id="start-quiz"></button>
+  <button class="btn btn-primary" id="start-quiz">Start</button>
 
   <div class="result-container">
-    
+
     <div class="result template" style="display:none">
 
-    <h2>Level: <span class="txt-level">Beginner</span> </h2>
-    
-    <table class='tbl-result'>
-      <thead>
-      <tr>
-        <th>Email address</th>
-        <th>Score</th>
-        <th>Time</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr class='tr-result template' style='display:none' data-weight="0">
-        <td class='txt-email'>example@info.fr</td>
-        <td class='txt-score'>3</td>
-        <td class='txt-time'>120s</td>
-      </tr>
-      </tbody>
-    </table>
+      <h2 class="result-title">Level: <span class="txt-level">Beginner</span></h2>
+
+      <table class='tbl-result'>
+        <thead>
+        <tr>
+          <th>Email address</th>
+          <th>Score</th>
+          <th>Time</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class='tr-result template' style='display:none' data-weight="0">
+          <td class='txt-email'>example@info.fr</td>
+          <td class='txt-score'>3</td>
+          <td class='txt-time'>120s</td>
+        </tr>
+        </tbody>
+      </table>
 
     </div>
 
 
-
   </div>
-  
+
   <!--<div class="result-container">-->
-    <!--<h2>Level: Beginner level 2</h2>-->
-    <!--<table>-->
-      <!--<thead>-->
-      <!--<tr>-->
-        <!--<th>Email address</th>-->
-        <!--<th>Question reply correctly</th>-->
-        <!--<th>Time</th>-->
-      <!--</tr>-->
-      <!--</thead>-->
-      <!--<tbody>-->
-      <!--<tr>-->
-        <!--<td>example@info2.co.uk</td>-->
-        <!--<td>10</td>-->
-        <!--<td>15 mins</td>-->
-      <!--</tr>-->
-      <!--</tbody>-->
-    <!--</table>-->
+  <!--<h2>Level: Beginner level 2</h2>-->
+  <!--<table>-->
+  <!--<thead>-->
+  <!--<tr>-->
+  <!--<th>Email address</th>-->
+  <!--<th>Question reply correctly</th>-->
+  <!--<th>Time</th>-->
+  <!--</tr>-->
+  <!--</thead>-->
+  <!--<tbody>-->
+  <!--<tr>-->
+  <!--<td>example@info2.co.uk</td>-->
+  <!--<td>10</td>-->
+  <!--<td>15 mins</td>-->
+  <!--</tr>-->
+  <!--</tbody>-->
+  <!--</table>-->
   <!--</div>-->
 </div>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script>
-var ws = new WebSocket("ws:/ws-devcon.cf:1995");
+  var ws = new WebSocket("ws:/ws-devcon.cf:1995");
+  var countdowninterval = null;
 
-ws.onopen = function(){
-  console.log("connected!");
-  var obj = {'type':'fetch-results', 'payload':'completed'};
-  ws.send(JSON.stringify(obj));
-}
+  ws.onopen = function () {
+    console.log("connected!");
+    var obj = {'type': 'fetch-results', 'payload': 'completed'};
+    ws.send(JSON.stringify(obj));
+  }
 
-ws.onmessage = function(e){
+  ws.onmessage = function (e) {
     var obj = JSON.parse(e.data);
 
-    if (obj.type='results-completed-only') rankAndShow(obj.payload);
-}
+    if (obj.type = 'results-completed-only') rankAndShow(obj.payload);
+  }
 
-function rankAndShow(results){
+  function rankAndShow(results) {
 
-  for(level in results){  
+    for (level in results) {
 
-    // $('table.'+level).find('tr.result-row').remove();
-    var thisTable = $('div.result.'+level).length != 0 ? $('div.result.'+level) : $(".result.template").clone()
-      .removeAttr('style')
-      .removeClass('template')
-      .addClass(level);
-    
-    thisTable.find('.txt-level').html(level);
-
-    $(".result-container").append(thisTable);
-
-    for(email in results[level]){
-
-      if ($('tr[data-email="'+email+'"]').length == 1) continue;
-
-      if (!(results[level][email][0].hasOwnProperty('duration'))) results[level][email][0]['duration'] = 900000;
-      var thisRow = thisTable.find('tr.template').clone()
-        .removeClass('template')
-        .addClass('result-row')
+      // $('table.'+level).find('tr.result-row').remove();
+      var thisTable = $('div.result.' + level).length != 0 ? $('div.result.' + level) : $(".result.template").clone()
         .removeAttr('style')
-        .attr('data-weight',results[level][email][0]['score'])
-        .attr('data-time', results[level][email][0]['duration'])
-        .attr('data-email',email);
+        .removeClass('template')
+        .addClass(level);
 
-      var dur = results[level][email][0]['duration'] / 1000;
-      
-      thisRow.find('td.txt-email').html(email);
-      thisRow.find('td.txt-score').html(results[level][email][0]['score']);
-      thisRow.find('td.txt-time').html(dur+'s');
+      thisTable.find('.txt-level').html(level);
+
+      $(".result-container").append(thisTable);
+
+      for (email in results[level]) {
+
+        if ($('tr[data-email="' + email + '"]').length == 1) continue;
+
+        if (!(results[level][email][0].hasOwnProperty('duration'))) results[level][email][0]['duration'] = 900000;
+        var thisRow = thisTable.find('tr.template').clone()
+          .removeClass('template')
+          .addClass('result-row')
+          .removeAttr('style')
+          .attr('data-weight', results[level][email][0]['score'])
+          .attr('data-time', results[level][email][0]['duration'])
+          .attr('data-email', email);
+
+        var dur = results[level][email][0]['duration'] / 1000;
+
+        thisRow.find('td.txt-email').html(email);
+        thisRow.find('td.txt-score').html(results[level][email][0]['score']);
+        thisRow.find('td.txt-time').html(dur + 's');
 
 
-      thisTable.find('tbody .tr-result').each(function(){
-        var currentRow = $(this);
-        console.log('email:',email);
-        console.log('weight:',thisRow.data('weight'));
-        
+        thisTable.find('tbody .tr-result').each(function () {
+          var currentRow = $(this);
+          console.log('email:', email);
+          console.log('weight:', thisRow.data('weight'));
 
-        if (thisRow.data('weight') > currentRow.data('weight')){
-          currentRow.before(thisRow);
 
-          return false;
-        } else if (thisRow.data('weight') == currentRow.data('weight')){
-          if (thisRow.data('time') < currentRow.data('time')){
+          if (thisRow.data('weight') > currentRow.data('weight')) {
             currentRow.before(thisRow);
-;
+
             return false;
+          } else if (thisRow.data('weight') == currentRow.data('weight')) {
+            if (thisRow.data('time') < currentRow.data('time')) {
+              currentRow.before(thisRow);
+              ;
+              return false;
+            }
           }
-        }
 
 
+        });
+        // .append(thisRow);
 
-      });
-      // .append(thisRow);
-      
+      }
+
+
     }
 
-
-  
-
-  }
-  
-}
-
-
-
-function countdown(){
-  var mins = parseInt($('.cd-min').html(), 10);
-  var secs = parseInt($('.cd-sec').html(), 10);
-  if (secs==0 && mins!=0){
-    secs=59;
-    mins--;
-  } else if (secs!=0){
-    secs--;
-  } else if (secs==0 && mins==0) {
-    var obj = {'type':'fetch-results', 'payload':'all'};
-    ws.send(JSON.stringify(obj));
-    window.clearInterval(countdowninterval);
-    
-    var ender = {'type':'close-quiz','payload':'ok'};
-    ws.send(JSON.stringify(ender));
   }
 
-  $('.cd-min').html((mins >= 10) ? mins : '0'+mins);
-  $('.cd-sec').html((secs >= 10) ? secs : '0'+secs);
 
-}
-countdowninterval = window.setInterval(countdown,1000);
+  function countdown() {
+    var mins = parseInt($('.cd-min').html(), 10);
+    var secs = parseInt($('.cd-sec').html(), 10);
+    if (secs == 0 && mins != 0) {
+      secs = 59;
+      mins--;
+    } else if (secs != 0) {
+      secs--;
+    } else if (secs == 0 && mins == 0) {
+      var obj = {'type': 'fetch-results', 'payload': 'all'};
+      ws.send(JSON.stringify(obj));
+      window.clearInterval(countdowninterval);
+
+      var ender = {'type': 'close-quiz', 'payload': 'ok'};
+      ws.send(JSON.stringify(ender));
+    }
+
+    $('.cd-min').html((mins >= 10) ? mins : '0' + mins);
+    $('.cd-sec').html((secs >= 10) ? secs : '0' + secs);
+
+  }
+
+
+  $("#start-quiz").on("click", function () {
+    countdowninterval = window.setInterval(countdown, 1000);
+  })
 </script>
 </body>
 </html>
