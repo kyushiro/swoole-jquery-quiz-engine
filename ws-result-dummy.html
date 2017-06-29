@@ -17,8 +17,8 @@
   <h1>Frontend Code Camp Quiz Result</h1>
 
   <h2 class="timer">
-    <span class="cd-min">01</span>:
-    <span class="cd-sec">00</span>
+    <span class="cd-min">00</span>:
+    <span class="cd-sec">05</span>
   </h2>
 
   <div class="result-container">
@@ -105,9 +105,6 @@ function rankAndShow(results){
     $(".result-container").append(thisTable);
 
     for(email in results[level]){
-      console.log("email already here?", thisTable.find('tr[data-email="'+email+'"]').length);
-      if (thisTable.find('tr[data-email="'+email+'"]').length==1) continue;
-      alert(thisTable.find('tr[data-email="'+email+'"]').length);
 
       if (!(results[level][email][0].hasOwnProperty('duration'))) results[level][email][0]['duration'] = 900000;
       var thisRow = thisTable.find('tr.template').clone()
