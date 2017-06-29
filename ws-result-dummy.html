@@ -95,7 +95,7 @@ function rankAndShow(results){
     console.log('----')
 
     // $('table.'+level).find('tr.result-row').remove();
-    var thisTable = $('table.'+level).length != 0? $('table.'+level) : $(".result.template").clone()
+    var thisTable = $('div.result.'+level).length != 0 ? $('div.result.'+level) : $(".result.template").clone()
       .removeAttr('style')
       .removeClass('template')
       .addClass(level);
