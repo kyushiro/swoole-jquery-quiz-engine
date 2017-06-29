@@ -36,7 +36,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr class='tr-result template' style='display:none'>
+      <tr class='tr-result template' style='display:none' data-weight="0">
         <td class='txt-email'>example@info.fr</td>
         <td class='txt-score'>3</td>
         <td class='txt-time'>120s</td>
@@ -108,7 +108,8 @@ function rankAndShow(results){
       var thisRow = thisTable.find('tr.template').clone()
         .removeClass('template')
         .removeAttr('style')
-        .data('weight',results[level][email][0]['score']);
+        .data('weight',results[level][email][0]['score'])
+        .data('time', results[level][email][0]['duration']);
 
       var dur = results[level][email][0]['duration'] / 1000;
       
@@ -117,7 +118,21 @@ function rankAndShow(results){
       thisRow.find('td.txt-time').html(dur+'s');
 
 
-      thisTable.find('tbody').append(thisRow);
+      thisTable.find('tbody .tr-result').each(function(){
+        var currentRow = $(this);
+
+        if (thisRow.data('weight') > currentRow.data('weight')){
+          currentRow.before(thisRow);
+          return false;
+        } else if (thisRow.data('weight') == currentRow.data('weight')){
+          if (thisRow.data('time') < currentRow.data('time')){
+            currentRow.before(thisRow);
+            return false;
+          }
+        }
+
+      });
+      // .append(thisRow);
       
     }
 
