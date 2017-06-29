@@ -124,6 +124,9 @@ function rankAndShow(results){
 
       thisTable.find('tbody .tr-result').each(function(){
         var currentRow = $(this);
+        console.log('email:',email);
+        console.log('weight:',thisRow.data('weight'));
+        
 
         if (thisRow.data('weight') > currentRow.data('weight')){
           currentRow.before(thisRow);
