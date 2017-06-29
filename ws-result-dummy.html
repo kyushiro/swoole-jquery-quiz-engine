@@ -104,7 +104,7 @@ function rankAndShow(results){
     $(".result-container").append(thisTable);
 
     for(email in results[level]){
-      console.log(level,email,results[level][email]);
+      console.log(results[level][email][0]);
       var thisRow = thisTable.find('tr.template').clone()
         .removeClass('template')
         .removeAttr('style')
