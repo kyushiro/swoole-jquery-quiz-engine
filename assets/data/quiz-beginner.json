@@ -1,31 +1,172 @@
 [
-  {
-    "q": "What does CSS stand for??",
-    "options": [
-      "Cascading Style Sheets",
-      "Coded Secure Script",
-      "Computer Specific Set",
-      "Centralized Setup Script"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "What is the !important statement used for in CSS?",
-    "options": [
-      "To specify that a rule is not important",
-      "It is useless",
-      "To make a rule take precedence over any other conflicting rules",
-      "none of these"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "q": "Loops and Variables are a feature of CSS",
-    "options": [
-      "True",
-      "False"
-    ],
-    "correctIndex": 1
-  }
-]
+    {
+        "q": "Is CSS case sensitive?",
+        "options": [
+            "yes",
+            "no",
+            "yes, but only if used in an xhtml document",
+            "yes, but only in strict mode"
+        ],
+        "correctIndex": 2
+    },
+    {
+        "q": "Which of the following statements is true?",
+        "options":[
+            "CSS is used to define the structure of a webpage",
+            "You don't need CSS if you use a CMS such as wordpress",
+            "CSS is not a programming language"
+        ],
+        "correctIndex": 2
+    },
 
+    {
+        "q": "According to best practices, where is the best place to include your css file?",
+        "options":[    
+            "In the html &lt;body&gt; tag",
+            "completely at the bottom of the webpage",
+            "It does not really matter",
+            "In the html &lt;head&gt; tag"
+            
+        ],
+        "correctIndex": 3
+    },
+
+
+    {
+        "q": "In CSS, the _________ selector is used to target a single unique element",
+        "options":[
+            "class",
+            "id",
+            "reference",
+            "text",
+        ],
+        "correctIndex": 1
+    },
+    {
+        "q": "Which of the following lines is correct?",
+        "options":[
+            "body { background-image:url(paper.gif); }",
+            "body { background-image:url(‘paper.gif’) };",
+            "body { background-image:url(‘paper.gif’) }",
+            "body { background-image:url(‘paper.gif’); }"
+        ],
+        "correctIndex": 3
+    },
+        
+
+
+    {
+        "q": "What would happen given the markup '&lt;div id='my-div' class='div-class'&gt;&lt;/div&gt;' and the picture below? <br/><img src='https://i11.servimg.com/u/f11/11/39/20/16/idvscl10.png'/>",
+        "options":[
+            "The div would be blue;",
+            "The div would be red;",
+            "there would be a conclict becaus,e both lines are targetting the same div",
+            "those 2 rules would be ignored."
+        ],
+        "correctIndex": 1
+    },
+    
+    {
+        "q": "Which of the following is <strong>NOT</strong> a valid CSS property?",
+        "options":[
+            "border-radius",
+            "box-shadow",
+            "content",
+            "text-animation",          
+        ],
+        "correctIndex": 3
+    },
+
+
+    {
+        "q": "To make the width of a table adjust to the current width of the browser window, you should set a table width of",
+        "options":[
+            "1024px",
+            "2048px",
+            "100%",
+            "1rem"
+        ],
+        "correctIndex": 2
+        
+    },
+
+
+
+    {
+        "q":"Given the following code, Which one of the following statement sets the value of 'first' to the first item of the array?<br/><img src='https://i11.servimg.com/u/f11/11/39/20/16/ced_na10.png'/>",
+        "options":[
+            "first = names[1];",
+            "first  = names.first();",
+            "first = getFirst(names);",
+            "none of the above"           
+        ], 
+        "correctIndex": 3
+    },            
+ 
+ 
+
+    {
+        "q":"Given the following code, what will be logged to the console? <br/><img src='https://i11.servimg.com/u/f11/11/39/20/16/cedval10.png'/>",
+        "options":[
+            "outside",
+            "inside",
+            "error",
+            "none of the above"
+        ],
+        "correctIndex": 0
+    },
+
+    {
+        "q":"Given 'var demoArray = [1, 2, 3]', What does 'typeof demoArray;' evaluate to?",
+        "options":[
+            "array",
+            "Array",
+            "object",
+            "it generates an error"            
+        ],
+        "correctIndex": 2
+    },
+
+    {
+        "q":"Given the following loop, which statements are true? <br/><img src='https://i11.servimg.com/u/f11/11/39/20/16/cedloo10.png'/>",
+        "options":[
+            "an error is thrown",
+            "the body is never executed",
+            "it is an infinite loop",
+            "all of the above"
+        ],
+        "correctIndex":2
+    },
+
+    {
+        "q":"Given the following, what will be output?<br/><img src='https://i11.servimg.com/u/f11/11/39/20/16/cedtim11.png'/>",
+        "options":[
+            "pristine",
+            "changed",
+            "undefined",
+            "syntax error"
+        ],
+        "correctIndex":0
+    },
+    {
+        "q":"Why do javascript and java have similar names?",
+        "options":[
+            "They are the same thing",
+            "They both originate from the island of Java",
+            "Java was inspired by javascript conceptually",
+            "none of the above"
+        ],
+        "correctIndex":3
+    },        
+    {
+        "q": "Which of the following cannot be done using client side javascript?",
+        "options":[
+            "validating a form",
+            "animating elements on a webpage",
+            "counting the number of times a user has visited a site",
+            "counting the number of visitors on a site"
+        ],
+        "correctIndex":3
+    }
+
+]
