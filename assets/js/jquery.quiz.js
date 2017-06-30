@@ -159,16 +159,20 @@
           currentQuestionIndex = currentQuestion - 1,
           correct = questions[currentQuestionIndex].correctIndex;
 
-        var type = 'send-one-answer';
-        var content = {
-          'question' : currentQuestionIndex,
-          'chosen_answer':selected,
-          'correct_answer':correct,
-          'email': $('.data-email-input').html(),
-          'level': $('body').data('quiz-level')         
-        }
+          if (online==true){
+            var type = 'send-one-answer';
+            var content = {
+              'question' : currentQuestionIndex,
+              'chosen_answer':selected,
+              'correct_answer':correct,
+              'email': $('.data-email-input').html(),
+              'level': $('body').data('quiz-level')         
+            }
 
-        send(type, content);
+            send(type, content);
+          }
+
+
 
         submissions.push(selected);
 
@@ -247,20 +251,25 @@
         $(resultsScreen).show();
         $('#quiz-results').html('Your results have been submitted! Please wait while everyone is completed the quiz');
 
-        var timeEnd = new Date().getTime();
+        if (online){
+          var timeEnd = new Date().getTime();
 
-        var submitDict = {};
-        // submitDict['answers'] = submissions;
-        submitDict['start'] = timeStart;
-        submitDict['end'] = timeEnd;
-        submitDict['email'] = $('.data-email-input').html();
-        submitDict['level'] = $('body').data('quiz-level');
+          var submitDict = {};
+          // submitDict['answers'] = submissions;
+          submitDict['start'] = timeStart;
+          submitDict['end'] = timeEnd;
+          submitDict['email'] = $('.data-email-input').html();
+          submitDict['level'] = $('body').data('quiz-level');
 
-        var type = 'finished';
+          var type = 'finished';
 
-        send(type,submitDict);
+          send(type,submitDict);
 
-        console.log(submitDict);
+          console.log(submitDict);
+        }
+        
+        
+
 
         // $.post("submit.php", submitDict, function (r) {
         //   console.log("inside post");
