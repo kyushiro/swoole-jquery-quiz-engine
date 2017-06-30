@@ -1,85 +1,101 @@
 [
-  {
-    "q": "To create a columned list of two-line email subjects and dates for a master-detail view, which are the most semantically correct?",
-    "options": [
-      "&lt;div&gt;+&lt;span&gt;",
-      "&lt;tr&gt;+&lt;td&gt;",
-      "&lt;ul&gt;+&lt;li&gt;",
-      "&lt;p&gt;+&lt;br&gt;",
-      "none of these",
-      "all of these"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "q": "To pass an array of strings to a function, you should not use...",
-    "options": [
-      "fn.apply(this, stringsArray)",
-      "fn.call(this, stringsArray)",
-      "fn.bind(this, stringsArray)"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "q": "____ and ____ would be the HTML tags you would use to display a menu item and its description.",
-    "options": [
-      "&lt;li&gt; + &lt;a&gt;",
-      "&lt;div&gt; + &lt;span&gt;",
-      "&lt;menu&gt; + &lt;menuItem&gt;"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "Given &lt;div id='outer'&gt;&lt;div class='inner'&gt;&lt;/div&gt;&lt;/div&gt;, which of these two is the most performant way to select the inner div ?",
-    "options": [
-      "getElementById('outer').children[0]",
-      "getElementsByClassName('inner')[0]"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "Given this: <img src='http://thomasburleson.github.io/angularjs-Quizzler/assets/data/images/q1_1.jpg' /><p>Which message will be returned by injecting this service and executing 'myService.getMessage()'?</p>",
-    "options": [
-      "Message one!",
-      "Message two!",
-      "Message three!"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "q": "When using Jasmine for TDD, what would you use to determine if an event handler was called:",
-    "options": [
-      "spyOn(object, 'eventHandlerMethodName')!",
-      "stub(object, 'eventHandlerMethodName')!",
-      "mock(object, 'eventHandlerMethodName')!",
-      "all three",
-      "none of these"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "q": "In AngularJS, when do you need to use $scope.apply()? Which is the best correctIndex:",
-    "options": [
-      "Anytime you want to trigger databinding changes to update the UI.",
-      "Only after $http remote service calls",
-      "For any model changes during event callback/notifications",
-      "For async callbacks outside AngularJS context",
-      "all of these",
-      "none of these"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "q": "In AngularJS, where should DOM manipulation occur ?",
-    "options": [
-      "Only in Controllers",
-      "Only in Directives",
-      "In Both Controllers and Directives",
-      "Only in async callback code",
-      "all of these",
-      "none of these"
-    ],
-    "correctIndex": 1
-  }
+    {
+        "q": "Given the following code, what would be logged to the console? <br/><img src='https://i11.servimg.com/u/f11/11/39/20/16/jstest10.png'/>",
+        "options" : [
+            "true",
+            "false",
+            "ReferenceError",
+            "Null"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "q": "What is the result of the following operation in Javascript? console.log((true + false) > 2 + true);",
+        "options": [
+            "true",
+            "false",
+            "typeError",
+            "ReferenceError"
+        ],
+        "correctIndex":1
+    },
+    {
+        "q": "given the following block of code, what is going to be alerted? <br/><img src='https://i11.servimg.com/u/f11/11/39/20/16/arrpro10.png'/>",
+        "options": [
+            "0",
+            "2",
+            "3",
+            "undefined"
+        ],
+        "correctIndex":1
+    },
+    {
+        "q": "Given the image below, and assuming no additional css, what is the font color of the second <p> tag? <br/><img src='https://i11.servimg.com/u/f11/11/39/20/16/style-10.png'/>",
+        "options": [
+            "red",
+            "black",
+            "something else"
+        ],
+        "correctIndex":1
+    },
+    {
+        "q": "Which of the following lines is valid json?",
+        "options": [
+            "[name => 'value']",
+            "{\"name\" : value}",
+            "[{\"name\":\"value\"}]",
+            "none of the above"
+        ],
+        "correctIndex":2
+    },
+    {
+        "q": "What is 'monkey patching' in Javascript?",
+        "options": [
+            "The ability to load a javascript file asynchronously after the page has loaded",
+            "A made up term, this does not exist",
+            "The ability to overwrite the standard library objects and functions such as Math.max()",
+            "None of the above"
+        ],
+        "correctIndex":2
+    },
+    {
+        "q": "What does the following line of javascript do? <br/>function(s) { return s.split(' ').reverse().join(' ');",
+        "options": [
+            "Reverses the order of the words in a string ('my str' => 'str my')",           
+            "Reverses the order of an array's elements",
+            "Reverses a string (eg: 'my str' would become 'rts ym')",
+            "none of the above"
+        ],
+        "correctIndex":0
+    },
+    {
+        "q": "what will the following code output? <br/><img src='https://i11.servimg.com/u/f11/11/39/20/16/undefi10.png'/>",
+        "options": [
+            "a defined : false, b defined: false",
+            "referenceError",
+            "a defined:true, b defined: true",
+            "a defined false, b defined true"
+        ],
+        "correctIndex":3
+    },
+    {
+        "q": "Given a function MyHugeFunc, and comparing calling MyHugeFunc() directly or using setTimeout(MyHugeFunc, 0), which of the following statements are true?",
+        "options": [
+            "The normal call will be noticeably faster than the setTimeout one",
+            "They are essentially the same",
+            "Calling setTimeOut moves the call to javascript's event loop rather than the call stack",
+            "none of the above"
+        ],
+        "correctIndex":2
+    },
+    {
+        "q": "What will the following code log to the console? <br/><img src='https://i11.servimg.com/u/f11/11/39/20/16/closur11.png' />",
+        "options": [
+           "3",
+           "32",
+           "7 ",
+           "none of the above"
+        ],
+        "correctIndex":0
+    }
 ]
-
