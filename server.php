@@ -95,9 +95,12 @@ Class Server
             $newjson = json_encode($data);
             file_put_contents($file,$newjson);
 
+            $toSend = ['type'=>'results-completed-only', 'payload'=>$data];
+            $toSend = json_encode($toSend);
+
 
             foreach($server->connections as $fd){
-                $server->push($fd, $data);
+                $server->push($fd, $toSend);
             }            
         }
 
