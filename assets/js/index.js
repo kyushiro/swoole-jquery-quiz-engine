@@ -29,22 +29,25 @@ ws.onmessage = function(e){
       });
     }
     else if (obj.type=="close-quiz"){
-      online = false;
+      if(online){
+          online = false;
 
-      swal({
-        title: 'Time out',
-        type: 'warning',
-        text: 'Oh noooo, you have run out of time :( Your current results are still being counted though ^^',
-        timer: 2000
-      }).then(
-        function () {},
-        // handling the promise rejection
-        function (dismiss) {
-          if (dismiss === 'timer') {
-            console.log('I was closed by the timer')
-          }
-        }
-      );
+          swal({
+            title: 'Time out',
+            type: 'warning',
+            text: 'Oh noooo, you have run out of time :( Your current results are still being counted though ^^',
+            timer: 30000
+          }).then(
+            function () {},
+            // handling the promise rejection
+            function (dismiss) {
+              if (dismiss === 'timer') {
+                console.log('I was closed by the timer')
+              }
+            }
+          );
+      }
+
     }
 };
 
