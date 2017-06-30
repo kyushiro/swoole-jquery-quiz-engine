@@ -98,6 +98,9 @@ Class Server
             $toSend = ['type'=>'results-completed-only', 'payload'=>$data];
             $toSend = json_encode($toSend);
 
+            echo "\n\n\n\n\n\n";
+            echo $toSend;
+
 
             foreach($server->connections as $fd){
                 $server->push($fd, $toSend);

@@ -83,6 +83,8 @@
   }
 
   ws.onmessage = function (e) {
+
+    console.log(e.data);
     var obj = JSON.parse(e.data);
 
     if (obj.type = 'results-completed-only') rankAndShow(obj.payload);
