@@ -95,38 +95,18 @@ Class Server
             $newjson = json_encode($data);
             file_put_contents($file,$newjson);
 
-            $toSend = ['type'=>'results-completed-only', 'payload'=>$data];
-            $toSend = json_encode($toSend);
-
-            echo "\n\n\n\n\n\n";
-            echo $toSend;
+            $msg = $this->resultSender('completed');
 
 
             foreach($server->connections as $fd){
-                $server->push($fd, $toSend);
+                $server->push($fd, $msg);
             }            
         }
 
 
         else if ($submitted['type'] == 'fetch-results'){
-            $file = 'assets/data/temp_results.json';
-            $data = file_get_contents($file);
-            $msg_container = ['type'=>'results-completed-only', 'payload'=>[]];
-           
-            $data = json_decode($data,true);
-            
-            foreach($data as $level=>$results){
-                $msg_container['payload'][$level] = [];
 
-                foreach ($results as $email=>$participant){
-                    if (($submitted['payload']=='completed') && (!isset($participant['finished']))) continue;
-                    $msg_container['payload'][$level][$email] = [];
-                    $msg_container['payload'][$level][$email] []= $results[$email];
-                }
-            }
-
-            $msg = json_encode($msg_container);
-
+            $msg = $this->resultSender($submitted['payload']);
             return $server->push($frame->fd, $msg);
 
         }
@@ -139,29 +119,28 @@ Class Server
             }
         }
 
-        // else if ($submitted['type'] == 'fetch-all'){
-        //     $file = 'assets/data/temp_results.json';
-        //     $data = file_get_contents($file);
-        //     $msg_container = ['type'=>'results-completed-only', 'payload'=>[]];
+    }
+
+    public function resultSender($submitcompleted){
+
+            $file = 'assets/data/temp_results.json';
+            $data = file_get_contents($file);
+            $msg_container = ['type'=>'results-completed-only', 'payload'=>[]];
            
-        //     $data = json_decode($data,true);
+            $data = json_decode($data,true);
             
-        //     foreach($data as $level=>$results){
-        //         $msg_container['payload'][$level] = [];
+            foreach($data as $level=>$results){
+                $msg_container['payload'][$level] = [];
 
-        //         foreach ($result as $email=>$participant){
-        //             msg_container['payload'][$level] = [];
-                    
-        //             $msg_container['payload'][$level][$email] []= $result[$email];
-        //         }
-        //     }
+                foreach ($results as $email=>$participant){
+                    if (($submitcompleted=='completed') && (!isset($participant['finished']))) continue;
+                    $msg_container['payload'][$level][$email] = [];
+                    $msg_container['payload'][$level][$email] []= $results[$email];
+                }
+            }
 
-        //     $msg = json_encode($msg_container);
-
-        //     return $server->push($frame->fd, $msg);
-
-        // }
-
+            $msg = json_encode($msg_container);
+            return $msg;
 
     }
 
