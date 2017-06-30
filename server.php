@@ -37,7 +37,10 @@ Class Server
         $submitted = json_decode($frame->data,true);
 
         if ($submitted['type'] == 'get-quiz-data'){
+            echo "fetching ".'assets/data/quiz-'.$submitted['payload'].'.json';
             $data = file_get_contents('assets/data/quiz-'.$submitted['payload'].'.json');
+            echo "\n data is";
+            var_dump($data);
             $msg = ['type'=>'quiz-json', 'payload'=>json_decode($data)];
             $msg = json_encode($msg);
             return $server->push($frame->fd, $msg);
