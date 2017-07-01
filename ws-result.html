@@ -181,7 +181,7 @@
     countdowninterval = window.setInterval(countdown, 1000);
   });
 
-  $('.btn.exporter').on('click',function(){
+  $('document').on('click', '.btn.exporter', function(){
     console.log('exporting');
     var $table = $(this).parent().find('table');
     $table.table2excel({
