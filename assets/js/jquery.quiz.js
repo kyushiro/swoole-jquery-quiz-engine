@@ -249,7 +249,7 @@
         $('#quiz-finish-btn').hide();
         $('#quiz-next-btn').hide();
         $(resultsScreen).show();
-        $('#quiz-results').html('Your results have been submitted! Please wait while everyone is completed the quiz');
+        $('#quiz-results').html('Your results have been submitted! Please wait while everyone is completing the quiz');
 
         if (online){
           var timeEnd = new Date().getTime();
