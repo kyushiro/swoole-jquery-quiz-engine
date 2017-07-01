@@ -184,10 +184,10 @@
   $(document).on('click', '.btn.exporter', function(){
     console.log('exporting');
     var $table = $(this).parent().find('table');
-    var lvl = $(this).parent().find('txt-level').html();
+    var lvl = $(this).parent().find('.txt-level').html();
     $table.table2excel({
       name: "Quiz results",
-      filename: "results-"+lvl+".xls" 
+      filename: "results-"+lvl+".html" 
     });
   });
 </script>
