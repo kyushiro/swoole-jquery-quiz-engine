@@ -54,7 +54,7 @@ ws.onmessage = function(e){
 };
 
 function thatsAllFolks(){
-  $('body').fadeOut(10000);
+  $('body').fadeOut(15000);
 }
 
 
