@@ -46,8 +46,16 @@ ws.onmessage = function(e){
           );
       }
 
+      thatsAllFolks();
+
+
+
     }
 };
+
+function thatsAllFolks(){
+  $('body').fadeOut(10000);
+}
 
 
 function send(type, content) {
