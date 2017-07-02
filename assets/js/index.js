@@ -1,3 +1,4 @@
+// quiz launching logic
 var ws = new WebSocket("ws:/ws-devcon.cf:1995");
 var online = false;
 
